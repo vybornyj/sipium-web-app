@@ -6,17 +6,17 @@ import { withSession } from 'src/scripts-server/sessions/withSession'
 import { ApiRoute } from 'src/types/types-for-import'
 
 interface RequestBody {
-  userReportId: number
+  userReportId: dbUserReport['userReportId']
   day: number
   month: number
   year: number
   hours: number
   minutes: number
-  name: string
+  name: dbUserReport['name']
   sex: dbUserReport['sex']
-  physActivity: number
-  height: string
-  weight: string
+  physActivity: dbUserReport['physActivity']
+  height: dbUserReport['height']
+  weight: dbUserReport['weight']
 }
 
 interface ResponseBody {

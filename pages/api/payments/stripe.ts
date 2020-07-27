@@ -6,9 +6,9 @@ import { withSession } from 'src/scripts-server/sessions/withSession'
 import { ApiRoute } from 'src/types/types-for-import'
 
 interface RequestBody {
-  email: string
-  cityName: string
-  cityId: string
+  email: dbUser['email']
+  cityName: dbUserReport['cityName']
+  cityId: dbUserReport['cityId']
   selectedDate: Date
   selectedDateISO: Date
   day: number
@@ -16,11 +16,11 @@ interface RequestBody {
   year: number
   hours: number
   minutes: number
-  name: string
+  name: dbUserReport['name']
   sex: dbUserReport['sex']
-  physActivity: number
-  height: string
-  weight: string
+  physActivity: dbUserReport['physActivity']
+  height: dbUserReport['height']
+  weight: dbUserReport['weight']
 }
 
 interface ResponseBody {

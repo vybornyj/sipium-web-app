@@ -27,7 +27,6 @@ class AppDocument extends Document {
           <meta name='apple-mobile-web-app-status-bar-style' content={appMainColor} />
 
           <meta name='format-detection' content='telephone=no' />
-          <meta name='viewport' content='minimum-scale=5, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover' />
 
           {/* <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png?v=jwEkP6xkdY' /> */}
           {/* <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png?v=jwEkP6xkdY' /> */}

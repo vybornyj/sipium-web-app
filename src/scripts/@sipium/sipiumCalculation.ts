@@ -24,11 +24,11 @@ interface reportData {
   year: number
   hours: number
   minutes: number
-  name: string
+  name: dbUserReport['name']
   sex: dbUserReport['sex']
-  physActivity: number
-  height: number
-  weight: number
+  physActivity: dbUserReport['physActivity']
+  height: dbUserReport['height']
+  weight: dbUserReport['weight']
 }
 
 interface props {
