@@ -1,0 +1,19 @@
+export const dbIdsAminoDeficit: string[] = [
+  'amino-deficit-1',
+  'amino-deficit-2',
+  'amino-deficit-3',
+  'amino-deficit-4',
+  'amino-deficit-7',
+  'amino-deficit-9',
+  'amino-deficit-10',
+  'amino-deficit-11',
+  'amino-deficit-12',
+  'amino-deficit-13',
+  'amino-deficit-14',
+  'amino-deficit-15',
+  'amino-deficit-16',
+  'amino-deficit-17',
+  'amino-deficit-18',
+  'amino-deficit-20',
+  'amino-deficit-21'
+]
