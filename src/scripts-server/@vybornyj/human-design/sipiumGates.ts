@@ -30,5 +30,6 @@ export const sipiumGates: sipiumGates = async ({ day, month, year, hours, minute
 
   const designDateTime = await hdDateTime({ trueDateTime: p, planet: 'Sun' })
   const designPlanetsPositions = await planetsPositions(designDateTime)
+
   return mandalaActivations(designPlanetsPositions)
 }
