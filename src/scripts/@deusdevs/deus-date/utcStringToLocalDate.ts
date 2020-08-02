@@ -1,3 +1,5 @@
+// use at client-side with string date received from server-side
+
 type utcStringToLocalDate = (date: string) => Date
 
 export const utcStringToLocalDate: utcStringToLocalDate = date => {

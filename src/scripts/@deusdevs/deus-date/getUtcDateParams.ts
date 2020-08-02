@@ -1,3 +1,7 @@
+// use at client-side with string date received from server-side
+// don't use at client-side with local Date
+// use at server-side with any date
+
 type getUtcDateParams = (date: number | string | Date) => { y: string; m: string; d: string; h: string; mi: string; s: string; ms: string }
 
 export const getUtcDateParams: getUtcDateParams = date => {
