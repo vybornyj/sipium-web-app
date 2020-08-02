@@ -3,7 +3,7 @@ import { calcDateUtc } from 'src/scripts-server/@vybornyj/input-to-utc/calcDateU
 import { pgQuery } from 'src/scripts-server/db/pgQuery'
 import { logger } from 'src/scripts-server/logger/logger'
 import { withSession } from 'src/scripts-server/sessions/withSession'
-import { getUtcDateParams, localDateToUtcString } from 'src/scripts/@deusdevs/deus-date'
+import { getUtcDateParams } from 'src/scripts/@deusdevs/deus-date'
 import { ApiRoute } from 'src/types/types-for-import'
 
 interface RequestBody {
@@ -43,7 +43,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
       // устанавливаю время рождения из формы
       birthDate.setHours(Number(hours), Number(minutes))
 
-      const birth = localDateToUtcString(birthDate, 'withoutSeconds')
+      const birth = birthDate.toISOString()
 
       const personality = await calcDateUtc(process.env.API_KEY_GOOGLE, process.env.API_KEY_TIMEZONE_DB, rows[0].cityId, birth)
 
