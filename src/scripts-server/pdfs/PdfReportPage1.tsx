@@ -32,7 +32,7 @@ export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserRepo
   return (
     <>
       <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        Sipium Report: {name} ({renderPrettyUtcDate(birth)}) UTC)
+        Sipium Report: {name} ({renderPrettyUtcDate(birth)})
       </div>
       <div className='pdf-table'>
         <div className='pdf-table-row'>
