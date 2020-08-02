@@ -3,10 +3,11 @@ import { printPdf } from 'src/scripts-server/pdfs/printPdf'
 
 interface Props {
   sipiumCalc: sipiumCalc
-  aminoData?: dbReportDescriptions
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-export const pdfReport = ({ sipiumCalc, aminoData }: Props) => {
+export const pdfReport = ({ sipiumCalc, dbReportDescriptionData, dbUserReportData }: Props) => {
   return printPdf(
     <html>
       <head>
@@ -216,7 +217,7 @@ export const pdfReport = ({ sipiumCalc, aminoData }: Props) => {
         <div style={{ textAlign: 'center' }}>
           <img src={`${process.env.URL_APP}/images/logo.jpg`} alt='' style={{ width: 320, height: 83 }} />
         </div>
-        <PdfReportPage1 sipiumCalc={sipiumCalc} aminoData={aminoData} />
+        <PdfReportPage1 sipiumCalc={sipiumCalc} dbReportDescriptionData={dbReportDescriptionData} dbUserReportData={dbUserReportData} />
       </body>
     </html>
   )

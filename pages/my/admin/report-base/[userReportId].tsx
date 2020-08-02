@@ -9,15 +9,16 @@ interface Props {
   error?: error
   userReportId?: number
   sipiumCalc?: sipiumCalc
-  aminoData?: dbReportDescriptions
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-const Page: NextPage<Props> = ({ error, userReportId, sipiumCalc, aminoData }) => {
+const Page: NextPage<Props> = ({ error, userReportId, sipiumCalc, dbReportDescriptionData, dbUserReportData }) => {
   if (error) return <Error />
 
   return (
-    <TemplateUser title={`Report: ${sipiumCalc.person.name}`} userReportId={userReportId}>
-      <SipiumReportAdmin sipiumCalc={sipiumCalc} aminoData={aminoData} />
+    <TemplateUser title={`Report: ${dbUserReportData.name}`} userReportId={userReportId}>
+      <SipiumReportAdmin sipiumCalc={sipiumCalc} dbReportDescriptionData={dbReportDescriptionData} dbUserReportData={dbUserReportData} />
     </TemplateUser>
   )
 }
@@ -27,14 +28,19 @@ export const getServerSideProps = withSspWrapper('admin', async ({ req, res, par
   const userReportId = params?.userReportId ? Number(params?.userReportId) : null
 
   if (userReportId) {
-    const { sipiumCalc, aminoData } = await apiRequestServer(res, '/api/reports/select', { userId, userReportId })
+    const { sipiumCalc, dbReportDescriptionData, dbUserReportData } = await apiRequestServer(res, '/api/reports/select', {
+      userId,
+      userReportId,
+      full: true
+    })
 
     if (sipiumCalc) {
       return {
         props: {
           userReportId,
           sipiumCalc,
-          aminoData
+          dbReportDescriptionData,
+          dbUserReportData
         }
       }
     }

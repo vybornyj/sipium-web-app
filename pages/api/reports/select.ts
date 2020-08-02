@@ -1,5 +1,4 @@
 import SQL from 'sql-template-strings'
-import { sipiumGates } from 'src/scripts-server/@vybornyj/human-design/sipiumGates'
 import { pgQuery } from 'src/scripts-server/db/pgQuery'
 import { logger } from 'src/scripts-server/logger/logger'
 import { withSession } from 'src/scripts-server/sessions/withSession'
@@ -16,19 +15,8 @@ interface RequestBody {
 
 interface ResponseBody {
   sipiumCalc?: sipiumCalc
-  aminoData?: dbReportDescriptions
-  userReportDbData?: {
-    cityName?: dbUserReport['cityName']
-    birth?: dbUserReport['birth']
-    personality?: dbUserReport['personality']
-    name?: dbUserReport['name']
-    sex?: dbUserReport['sex']
-    physActivity?: dbUserReport['physActivity']
-    height?: dbUserReport['height']
-    weight?: dbUserReport['weight']
-    hours?: number
-    minutes?: number
-  }
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
 const __path__ = 'pages/api/hd/select.ts: '
@@ -48,29 +36,9 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
     await res.status(200).end()
     return
   } else {
-    const { personality, name, birth, sex, physActivity, height, weight } = rows[0] // todo: вывести на клиент: cityName, birth
+    const dbUserReportData = rows[0]
 
-    const day = personality.getDate()
-    const month = personality.getMonth() + 1
-    const year = personality.getFullYear()
-    const hours = personality.getHours()
-    const minutes = personality.getMinutes()
-
-    const sipiumCalc = sipiumCalculation({
-      designMandalaActivations: await sipiumGates({ day, month, year, hours, minutes }),
-      reportData: {
-        name,
-        day,
-        month,
-        year,
-        hours,
-        minutes,
-        sex,
-        physActivity,
-        height,
-        weight
-      }
-    })
+    const sipiumCalc = await sipiumCalculation({ dbUserReportData })
 
     let descriptionIds
 
@@ -81,7 +49,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
       descriptionIds = [...aminoacids.map(el => `amino-products-${el}`), ...aminoacids.map(el => `amino-deficit-${el}`)]
     }
 
-    const { err: err2, rows: aminoData } = await pgQuery<dbReportDescription>(SQL/* language=SQL */ `
+    const { err: err2, rows: dbReportDescriptionData } = await pgQuery<dbReportDescription>(SQL/* language=SQL */ `
       SELECT  "descriptionId", "descriptionEn", "descriptionRu"
       FROM    "reportDescriptions"
       WHERE   "descriptionId" = ANY(${descriptionIds})
@@ -90,12 +58,8 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
     if (!err2) {
       res.status(200).json({
         sipiumCalc,
-        aminoData,
-        userReportDbData: {
-          ...rows[0],
-          hours: birth.getHours(),
-          minutes: birth.getMinutes()
-        }
+        dbReportDescriptionData,
+        dbUserReportData
       })
     } else {
       logger.error(`${__path__}err: ${err}`)

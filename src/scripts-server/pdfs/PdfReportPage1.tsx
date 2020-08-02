@@ -1,13 +1,16 @@
+import { renderPrettyUtcDate } from 'src/scripts/@deusdevs/deus-date'
 import { convertGateToAminoAcid } from 'src/scripts/@sipium/convert/convertGateToAminoAcid'
 import { langAminoAcids } from 'src/scripts/@sipium/lang/langAminoAcids'
 
 interface Props {
-  sipiumCalc: sipiumCalc
-  aminoData: dbReportDescriptions
+  sipiumCalc?: sipiumCalc
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
-  const { age, name, sex, year, month, day, hours, minutes, height, weight } = sipiumCalc.person
+export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserReportData }: Props) => {
+  const { age } = sipiumCalc
+  const { name, sex, birth, height, weight } = dbUserReportData
   /* const { aminoacids, proteinsActivations, fatsActivations, carbsActivations } = sipiumCalc.food */
   const { gatesArr } = sipiumCalc.primary
   const { pfceDaysWeekArr } = sipiumCalc.other
@@ -16,16 +19,20 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
 
   const aminoImg = [...new Set(gatesArr.map(gate => langAminoAcids[convertGateToAminoAcid[gate]].en.split(' ')[0].toLowerCase()))]
   const aminoProducts = [
-    ...new Set(gatesArr.map(gate => aminoData.find(a => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu))
+    ...new Set(
+      gatesArr.map(gate => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
+    )
   ]
   const aminoDeficit = [
-    ...new Set(gatesArr.map(gate => aminoData.find(a => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu))
+    ...new Set(
+      gatesArr.map(gate => dbReportDescriptionData.find(a => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
+    )
   ]
 
   return (
     <>
       <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        Sipium Report: {name} ({year}.{month}.{day} {hours}:{minutes} UTC)
+        Sipium Report: {name} ({renderPrettyUtcDate(birth)}) UTC)
       </div>
       <div className='pdf-table'>
         <div className='pdf-table-row'>
@@ -152,7 +159,7 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
           <div>Углеводы</div>
           <div>
             {[...new Set(carbsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
@@ -160,7 +167,7 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
           <div>Белки</div>
           <div>
             {[...new Set(proteinsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
@@ -168,7 +175,7 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
           <div>Жиры</div>
           <div>
             {[...new Set(fatsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
@@ -180,7 +187,7 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
 
       {/*      <div>
         <h3 className='global'>Психо-генетика и аминокислоты. </h3>
-        {aminoData &&
+        {dbReportDescriptionData &&
           aminoNumbers.map((el, key) => (
             <div key={key}>
               <b>Аминокислота: {el}</b>
@@ -196,7 +203,7 @@ export const PdfReportPage1 = ({ sipiumCalc, aminoData }: Props) => {
 
       <div>
         {' '}
-        {aminoData &&
+        {dbReportDescriptionData &&
           aminoNumbers.map((el, key) => (
             <div key={key} className='acid-item'>
               <h4>Аминокислота: {el}</h4>

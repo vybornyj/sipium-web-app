@@ -9,7 +9,7 @@ import IconGetApp from '@material-ui/icons/GetApp'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { AppButton } from 'src/components/common/buttons/AppButton'
-import { prettyYmdhm } from 'src/scripts/helpers/prettyYmdhm'
+import { renderPrettyUtcDate } from 'src/scripts/@deusdevs/deus-date'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,7 +49,7 @@ export const ReportCard: FunctionComponent<Props> = ({ report }) => {
                 {name}
               </Typography>
               <Typography variant='body2' color='textSecondary' component='p'>
-                {prettyYmdhm(birth)}
+                {renderPrettyUtcDate(birth)}
                 <br />
                 {cityName}
               </Typography>

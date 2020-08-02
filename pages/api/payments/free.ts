@@ -7,13 +7,7 @@ interface RequestBody {
   email: dbUser['email']
   cityName: dbUserReport['cityName']
   cityId: dbUserReport['cityId']
-  selectedDate: Date
-  selectedDateISO: Date
-  day: number
-  month: number
-  year: number
-  hours: number
-  minutes: number
+  birth: string
   name: dbUserReport['name']
   sex: dbUserReport['sex']
   physActivity: dbUserReport['physActivity']
@@ -28,15 +22,15 @@ interface ResponseBody {
 const __path__ = 'pages/api/reports/insert.ts: '
 
 const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
-  const { email, ...addReportData } = req.body
+  const reportData = req.body
+  const { email } = reportData
 
-  const { userReportId, userId, isAdmin } = await funcAddReport(email, addReportData)
+  const { userReportId, userId, isAdmin } = await funcAddReport(reportData)
 
   if (userReportId && userId) {
     req.session.set('user', { userId, isAdmin, email })
     await req.session.save()
 
-    // отправляю
     await res.status(200).json({ userReportId })
   } else {
     logger.error(`${__path__}!success`)

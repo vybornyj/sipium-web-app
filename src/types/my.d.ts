@@ -1,6 +1,7 @@
 type error = true | undefined
 type lang = 'en' | 'ru'
 type limit = number
+type dateIsoString = string
 
 interface anyObject {
   [key: string]: any

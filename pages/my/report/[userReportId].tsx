@@ -10,28 +10,17 @@ interface Props {
   error?: error
   userReportId: number
   sipiumCalc: sipiumCalc
-  aminoData: dbReportDescriptions
-  userReportDbData?: {
-    cityName?: dbUserReport['cityName']
-    birth?: dbUserReport['birth']
-    personality?: dbUserReport['personality']
-    name?: dbUserReport['name']
-    sex?: dbUserReport['sex']
-    physActivity?: dbUserReport['physActivity']
-    height?: dbUserReport['height']
-    weight?: dbUserReport['weight']
-    hours?: number
-    minutes?: number
-  }
+  dbReportDescriptionData: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-const Page: NextPage<Props> = ({ error, userReportId, sipiumCalc, aminoData, userReportDbData }) => {
+const Page: NextPage<Props> = ({ error, userReportId, sipiumCalc, dbReportDescriptionData, dbUserReportData }) => {
   if (error) return <Error />
 
   return (
-    <TemplateUser title={`Report: ${sipiumCalc.person.name}`} userReportId={userReportId}>
-      <SipiumForm initialState={userReportDbData} userReportId={userReportId} />
-      <SipiumReportUser sipiumCalc={sipiumCalc} aminoData={aminoData} />
+    <TemplateUser title={`Report: ${dbUserReportData.name}`} userReportId={userReportId}>
+      <SipiumForm dbUserReportData={dbUserReportData} userReportId={userReportId} />
+      <SipiumReportUser sipiumCalc={sipiumCalc} dbReportDescriptionData={dbReportDescriptionData} dbUserReportData={dbUserReportData} />
     </TemplateUser>
   )
 }
@@ -41,15 +30,15 @@ export const getServerSideProps = withSspWrapper('user', async ({ req, res, para
   const userReportId = params?.userReportId ? Number(params?.userReportId) : null
 
   if (userId && userReportId) {
-    const { sipiumCalc, aminoData, userReportDbData } = await apiRequestServer(res, '/api/reports/select', { userId, userReportId })
+    const { sipiumCalc, dbReportDescriptionData, dbUserReportData } = await apiRequestServer(res, '/api/reports/select', { userId, userReportId })
 
     if (sipiumCalc) {
       return {
         props: {
           userReportId,
           sipiumCalc,
-          aminoData,
-          userReportDbData
+          dbReportDescriptionData,
+          dbUserReportData
         }
       }
     }

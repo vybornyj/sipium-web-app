@@ -12,6 +12,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { useDispatch } from 'reactn'
 import { AppButton } from 'src/components/common/buttons/AppButton'
 import { SipiumFormCity } from 'src/components/common/forms/SipiumFormCity'
+import { localDateToUtcString, utcStringToLocalDate } from 'src/scripts/@deusdevs/deus-date'
 import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
 import { hotReplacerEnName, hotReplacerHeightWeight } from 'src/scripts/helpers/hotReplacers'
 
@@ -23,34 +24,25 @@ const stripePromise = loadStripe(API_PUBLIC_KEY_STRIPE)
 
 interface Props {
   userEmail?: dbUser['email']
-  initialState?: {
-    name?: dbUserReport['name']
-    physActivity?: dbUserReport['physActivity']
-    height?: dbUserReport['height']
-    weight?: dbUserReport['weight']
-    hours?: number
-    minutes?: number
-  }
+  dbUserReportData?: dbUserReport
   userReportId?: number
 }
 
-export const SipiumForm: FunctionComponent<Props> = ({ userEmail, initialState, userReportId }) => {
+export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportData, userReportId }) => {
   const initDate = new Date()
   initDate.setFullYear(initDate.getFullYear() - 30)
-  if (typeof initialState?.hours === 'number' && typeof initialState?.minutes === 'number') {
-    initDate.setHours(initialState.hours, initialState.minutes)
-  }
+
   const STORE_SET_ALERT_POPUP = useDispatch('STORE_SET_ALERT_POPUP')
   const router = useRouter()
-  const [name, setName] = useState(initialState?.name ?? '')
+  const [name, setName] = useState(dbUserReportData?.name ?? '')
   const [email, setEmail] = useState(userEmail ?? '')
   const [city, setCity] = useState<{ cityName: string; cityId: string }>(null)
 
   const [sex, setSex] = useState<0 | 1 | null>(0)
-  const [physActivity, setPhysActivity] = useState<dbUserReport['physActivity']>(initialState?.physActivity ?? 1)
-  const [height, setHeight] = useState(initialState?.height ?? '170')
-  const [weight, setWeight] = useState(initialState?.weight ?? '70')
-  const [selectedDate, handleDateChange] = useState(initDate)
+  const [physActivity, setPhysActivity] = useState<dbUserReport['physActivity']>(dbUserReportData?.physActivity ?? 1)
+  const [height, setHeight] = useState(dbUserReportData?.height ?? '170')
+  const [weight, setWeight] = useState(dbUserReportData?.weight ?? '70')
+  const [selectedDate, handleDateChange] = useState<Date>(dbUserReportData?.birth ? utcStringToLocalDate(dbUserReportData?.birth) : initDate)
 
   const handleSetName: onChange = event => setName(hotReplacerEnName(event.target.value))
   const handleSetEmail: onChange = event => setEmail(event.target.value)
@@ -58,9 +50,14 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, initialState, 
   const handleSetWeight: onChange = event => setWeight(hotReplacerHeightWeight(event.target.value))
 
   const handleSubmitUpdate = async () => {
-    const hours = selectedDate.getHours()
-    const minutes = selectedDate.getMinutes()
-    const data = { userReportId, hours, minutes, name, physActivity, height, weight }
+    const data = {
+      userReportId,
+      birth: localDateToUtcString(selectedDate, 'withoutSeconds'),
+      name,
+      physActivity,
+      height,
+      weight
+    }
     const { error } = await apiRequestClient('/api/reports/update', data)
 
     if (!error) {
@@ -77,11 +74,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, initialState, 
         email,
         cityName: city.cityName,
         cityId: city.cityId,
-        day: selectedDate.getDate(),
-        month: selectedDate.getMonth() + 1,
-        year: selectedDate.getFullYear(),
-        hours: selectedDate.getHours(),
-        minutes: selectedDate.getMinutes(),
+        birth: localDateToUtcString(selectedDate, 'withoutSeconds'),
         name,
         sex,
         physActivity,

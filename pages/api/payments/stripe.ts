@@ -9,13 +9,7 @@ interface RequestBody {
   email: dbUser['email']
   cityName: dbUserReport['cityName']
   cityId: dbUserReport['cityId']
-  selectedDate: Date
-  selectedDateISO: Date
-  day: number
-  month: number
-  year: number
-  hours: number
-  minutes: number
+  birth: string
   name: dbUserReport['name']
   sex: dbUserReport['sex']
   physActivity: dbUserReport['physActivity']
@@ -30,7 +24,7 @@ interface ResponseBody {
 const __path__ = 'pages/api/payments/stripe.ts: '
 
 const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
-  const { email, cityName, cityId, day, month, year, hours, minutes, name, sex, physActivity, height, weight } = req.body
+  const { email, cityName, cityId, birth, name, sex, physActivity, height, weight } = req.body
 
   const product = 'Sipium Report'
   const provider = 'stripe'
@@ -39,11 +33,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
   const purchaseData = {
     cityName,
     cityId,
-    day,
-    month,
-    year,
-    hours,
-    minutes,
+    birth,
     name,
     sex,
     physActivity,
