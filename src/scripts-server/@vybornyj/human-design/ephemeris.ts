@@ -1,5 +1,6 @@
 import childProcess from 'child_process'
 import { logger } from 'src/scripts-server/logger/logger'
+import { getUtcDateParams } from 'src/scripts/@deusdevs/deus-date'
 import util from 'util'
 
 const exec = util.promisify(childProcess.exec)
@@ -21,20 +22,18 @@ const planetNumByName = {
   Chiron: 'D'
 }
 
-type with0 = (num: string | number) => string
+type GetParams = (date: Date | string) => { hms: string; dmy: string; path: string; exe: string }
+const getParams: GetParams = date => {
+  const { y, m, d, h, mi, s } = getUtcDateParams(date)
+  return {
+    hms: `${h}:${mi}:${s}`,
+    dmy: `${d}.${m}.${y}`,
+    path: process.env.PATH_SWE,
+    exe: process.env.PATH_SWE_EXE
+  }
+}
 
-const with0: with0 = num => `${num > 9 ? '' : 0}${num}`
-
-type GetParams = (date: Date) => { hms: string; dmy: string; path: string; exe: string }
-
-const getParams: GetParams = date => ({
-  hms: `${with0(date.getHours())}:${with0(date.getMinutes())}:${with0(date.getSeconds())}`,
-  dmy: `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`,
-  path: process.env.PATH_SWE,
-  exe: process.env.PATH_SWE_EXE
-})
-
-type PlanetsPositions = (date: Date) => Promise<{ name: planetName; pos: number }[]>
+type PlanetsPositions = (date: Date | string) => Promise<{ name: planetName; pos: number }[]>
 
 export const planetsPositions: PlanetsPositions = async date => {
   const { hms, dmy, path, exe } = getParams(date)
@@ -66,7 +65,7 @@ export const planetsPositions: PlanetsPositions = async date => {
   }
 }
 
-type PlanetPosition = (planetName: planetName, date: Date) => Promise<number | null>
+type PlanetPosition = (planetName: planetName, date: Date | string) => Promise<number | null>
 
 export const planetPosition: PlanetPosition = async (planetName, date) => {
   const p = planetNumByName[planetName]

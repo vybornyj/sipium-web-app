@@ -1,4 +1,4 @@
-import { sipiumGatesData } from 'src/scripts-server/@vybornyj/human-design/sipiumGates'
+import { sipiumGates, sipiumGatesData } from 'src/scripts-server/@vybornyj/human-design/sipiumGates'
 import { convertGateToAminoAcid } from 'src/scripts/@sipium/convert/convertGateToAminoAcid'
 import {
   acidsInFood,
@@ -18,28 +18,15 @@ import {
 import { idsSipiumGates } from 'src/scripts/@sipium/enums/idsSipiumGates'
 import { gatesConsts } from 'src/scripts/@sipium/sipiumData/gatesConsts'
 
-interface reportData {
-  day: number
-  month: number
-  year: number
-  hours: number
-  minutes: number
-  name: dbUserReport['name']
-  sex: dbUserReport['sex']
-  physActivity: dbUserReport['physActivity']
-  height: dbUserReport['height']
-  weight: dbUserReport['weight']
-}
-
 interface props {
-  designMandalaActivations: sipiumGatesData
-  reportData: reportData
+  dbUserReportData?: dbUserReport
 }
 
-export const sipiumCalculation = ({ designMandalaActivations, reportData }: props): sipiumCalc => {
-  const { day, month, year, hours, minutes, name, sex, physActivity, height, weight } = reportData
+export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<sipiumCalc> => {
+  const { birth, personality, sex, physActivity, height, weight } = dbUserReportData
+  const designMandalaActivations: sipiumGatesData = await sipiumGates(personality)
 
-  const selectedDate = new Date(Date.UTC(year, month - 1, day, hours, minutes))
+  const selectedDate = new Date(birth)
   const age = Math.abs(new Date(Date.now() - selectedDate.getTime()).getUTCFullYear() - 1970)
 
   // Получаем массив ворот нужного вида из пришедших активаций
@@ -200,19 +187,7 @@ export const sipiumCalculation = ({ designMandalaActivations, reportData }: prop
   })
 
   return {
-    person: {
-      age,
-      name,
-      sex,
-      physActivity,
-      year,
-      month,
-      day,
-      hours,
-      minutes,
-      height,
-      weight
-    },
+    age,
     food: {
       aminoacids,
       foodGatesNumbers,

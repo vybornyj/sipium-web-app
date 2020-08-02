@@ -1,19 +1,23 @@
 import { FunctionComponent } from 'react'
+import { Aminoacids } from 'src/components/main/SipiumReport/Aminoacids'
 import { FoodTypesDaysWeek } from 'src/components/main/SipiumReport/FoodTypesDaysWeek'
 import { Person } from 'src/components/main/SipiumReport/Person'
-import { Aminoacids } from './SipiumReport/Aminoacids'
 
 interface Props {
-  sipiumCalc: sipiumCalc
-  aminoData: dbReportDescriptions
+  sipiumCalc?: sipiumCalc
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-export const SipiumReportUser: FunctionComponent<Props> = ({ sipiumCalc, aminoData }) => {
+export const SipiumReportUser: FunctionComponent<Props> = ({ sipiumCalc, dbReportDescriptionData, dbUserReportData }) => {
   if (!sipiumCalc) return null
-  const { age, sex, height, weight } = sipiumCalc.person // name, year, month, day, hours, minutes
+  const {
+    age,
+    primary: { gatesArr },
+    other: { pfceDaysWeekArr }
+  } = sipiumCalc
+  const { sex, height, weight } = dbUserReportData
   /* const { aminoacids, proteinsActivations, fatsActivations, carbsActivations } = sipiumCalc.food */
-  const { pfceDaysWeekArr } = sipiumCalc.other
-  const { gatesArr } = sipiumCalc.primary
 
   return (
     <div>
@@ -22,12 +26,12 @@ export const SipiumReportUser: FunctionComponent<Props> = ({ sipiumCalc, aminoDa
         <FoodTypesDaysWeek pfceDaysWeekArr={pfceDaysWeekArr} />
         {/*        <RecommendedProducts
           aminoacids={aminoacids}
-          aminoData={aminoData}
+          dbReportDescriptionData={dbReportDescriptionData}
           proteinsActivations={proteinsActivations}
           fatsActivations={fatsActivations}
           carbsActivations={carbsActivations}
         /> */}
-        <Aminoacids aminoData={aminoData} gatesArr={gatesArr} />
+        <Aminoacids dbReportDescriptionData={dbReportDescriptionData} gatesArr={gatesArr} />
       </div>
     </div>
   )

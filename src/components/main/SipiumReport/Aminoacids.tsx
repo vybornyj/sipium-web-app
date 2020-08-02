@@ -3,24 +3,28 @@ import { convertGateToAminoAcid } from 'src/scripts/@sipium/convert/convertGateT
 import { langAminoAcids } from 'src/scripts/@sipium/lang/langAminoAcids'
 
 interface Props {
-  aminoData: dbReportDescriptions
+  dbReportDescriptionData: dbReportDescriptions
   gatesArr: number[]
 }
 
-export const Aminoacids: FunctionComponent<Props> = ({ aminoData, gatesArr }) => {
+export const Aminoacids: FunctionComponent<Props> = ({ dbReportDescriptionData, gatesArr }) => {
   const aminoNumbers = [...new Set(gatesArr.map(gate => langAminoAcids[convertGateToAminoAcid[gate]].ru))]
   const aminoImg = [...new Set(gatesArr.map(gate => langAminoAcids[convertGateToAminoAcid[gate]].en.split(' ')[0].toLowerCase()))]
 
   const aminoProducts = [
-    ...new Set(gatesArr.map(gate => aminoData.find(a => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu))
+    ...new Set(
+      gatesArr.map(gate => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
+    )
   ]
   const aminoDeficit = [
-    ...new Set(gatesArr.map(gate => aminoData.find(a => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu))
+    ...new Set(
+      gatesArr.map(gate => dbReportDescriptionData.find(a => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
+    )
   ]
   return (
     <>
       <h3>Психо-генетика и аминокислоты.</h3>
-      {aminoData &&
+      {dbReportDescriptionData &&
         aminoNumbers.map((el, key) => (
           <div key={key} className='acid-item'>
             <h4>Аминокислота: {el}</h4>

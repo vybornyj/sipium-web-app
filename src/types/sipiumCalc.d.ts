@@ -1,17 +1,5 @@
 interface sipiumCalc {
-  person: {
-    age: number
-    day: number
-    month: number
-    year: number
-    hours: number
-    minutes: number
-    name: dbUserReport['name']
-    sex: dbUserReport['sex']
-    physActivity: dbUserReport['physActivity']
-    height: dbUserReport['height']
-    weight: dbUserReport['weight']
-  }
+  age: number
   food: {
     aminoacids: number[]
     foodGatesNumbers: number[]

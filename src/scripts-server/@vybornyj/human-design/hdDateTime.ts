@@ -4,9 +4,11 @@ type ModSec = (date: Date, seconds: number) => Date
 
 const modSec: ModSec = (date: Date, milliseconds: number) => new Date(date.setSeconds(date.getSeconds() + milliseconds))
 
-type HdDateTime = (options: { trueDateTime: Date; planet: 'Sun' | 'Moon' | 'Saturn'; isReturn?: boolean; modifySeconds?: number }) => Promise<Date>
+type HdDateTime = (options: { personality: string; planet: 'Sun' | 'Moon' | 'Saturn'; isReturn?: boolean; modifySeconds?: number }) => Promise<string>
 
-export const hdDateTime: HdDateTime = async ({ trueDateTime, planet, isReturn = false, modifySeconds = 0 }) => {
+export const hdDateTime: HdDateTime = async ({ personality, planet, isReturn = false, modifySeconds = 0 }) => {
+  let trueDateTime = new Date(personality)
+
   // Истинная позиция (для которой будет высчитываться время)
   let truePosition = await planetPosition(planet, trueDateTime)
 
@@ -83,5 +85,5 @@ export const hdDateTime: HdDateTime = async ({ trueDateTime, planet, isReturn = 
   await planetRegulation(6) //  6 секунд  (в 6,66 раз меньше)
   await planetRegulation(1) //  1 секунд (в 6    раз меньше)
 
-  return calculatedDateTime
+  return calculatedDateTime.toISOString()
 }

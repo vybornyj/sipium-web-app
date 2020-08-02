@@ -10,16 +10,23 @@ import { WeightWithoutFats } from 'src/components/main/SipiumReport/WeightWithou
 import { activityLevels } from 'src/scripts/@sipium/data'
 
 interface Props {
-  sipiumCalc: sipiumCalc
-  aminoData: dbReportDescriptions
+  sipiumCalc?: sipiumCalc
+  dbReportDescriptionData?: dbReportDescriptions
+  dbUserReportData?: dbUserReport
 }
 
-export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, aminoData }) => {
+export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, dbReportDescriptionData, dbUserReportData }) => {
   if (!sipiumCalc) return null
 
-  const { age, sex, height, weight } = sipiumCalc.person // name, year, month, day, hours, minutes
-  const { foodGatesNumbers } = sipiumCalc.food
-  const { weightWithoutFats, mainExchangeWithLoads, pillsFoodSum, pfceDaysWeekArr } = sipiumCalc.other
+  const {
+    age,
+    primary,
+    totalNeedNutrOnActiveGate,
+    totalNeedNutrOnGate,
+    food: { foodGatesNumbers },
+    other: { weightWithoutFats, mainExchangeWithLoads, pillsFoodSum, pfceDaysWeekArr }
+  } = sipiumCalc
+  const { sex, height, weight } = dbUserReportData
 
   const [activity, setActivity] = useState(1.2)
   const setActivityHandler: onChange = event => {
@@ -35,7 +42,7 @@ export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, aminoD
         <FoodTypesDaysWeek pfceDaysWeekArr={pfceDaysWeekArr} />
         {/*        <RecommendedProducts
           aminoacids={aminoacids}
-          aminoData={aminoData}
+          dbReportDescriptionData={dbReportDescriptionData}
           proteinsActivations={proteinsActivations}
           fatsActivations={fatsActivations}
           carbsActivations={carbsActivations}
@@ -78,11 +85,11 @@ export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, aminoD
 
       <Activations
         multiplier={multiplier}
-        primary={sipiumCalc.primary}
-        totalNeedNutrOnActiveGate={sipiumCalc.totalNeedNutrOnActiveGate}
-        totalNeedNutrOnGate={sipiumCalc.totalNeedNutrOnGate}
+        primary={primary}
+        totalNeedNutrOnActiveGate={totalNeedNutrOnActiveGate}
+        totalNeedNutrOnGate={totalNeedNutrOnGate}
       />
-      <ProductsGates multiplier={multiplier} aminoData={aminoData} />
+      <ProductsGates multiplier={multiplier} dbReportDescriptionData={dbReportDescriptionData} />
     </div>
   )
 }

@@ -3,15 +3,12 @@ import { calcDateUtc } from 'src/scripts-server/@vybornyj/input-to-utc/calcDateU
 import { pgQuery } from 'src/scripts-server/db/pgQuery'
 import { logger } from 'src/scripts-server/logger/logger'
 import { withSession } from 'src/scripts-server/sessions/withSession'
+import { getUtcDateParams, localDateToUtcString } from 'src/scripts/@deusdevs/deus-date'
 import { ApiRoute } from 'src/types/types-for-import'
 
 interface RequestBody {
   userReportId: dbUserReport['userReportId']
-  day: number
-  month: number
-  year: number
-  hours: number
-  minutes: number
+  birth: string
   name: dbUserReport['name']
   sex: dbUserReport['sex']
   physActivity: dbUserReport['physActivity']
@@ -26,7 +23,9 @@ interface ResponseBody {
 const __path__ = 'pages/api/reports/update.ts: '
 
 const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
-  const { userReportId, hours, minutes, name, physActivity, height, weight } = req.body
+  const { userReportId, birth: newBirth, name, physActivity, height, weight } = req.body
+  const { h: hours, mi: minutes } = getUtcDateParams(newBirth)
+
   const { userId = null }: sessionUser = req?.session?.get('user') ?? {}
 
   const { err, rowCount, rows } = await pgQuery<dbUserReport>(SQL/* language=SQL */ `
@@ -38,17 +37,15 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
 
   if (!err) {
     if (rowCount) {
-      const birth = new Date(rows[0].birth)
-      birth.setHours(hours, minutes)
+      // беру дату и время рождения из БД
+      const birthDate = new Date(rows[0].birth)
 
-      const personality = await calcDateUtc(process.env.API_KEY_GOOGLE, process.env.API_KEY_TIMEZONE_DB, {
-        cityId: rows[0].cityId,
-        day: birth.getDate(),
-        month: birth.getMonth() + 1,
-        year: birth.getFullYear(),
-        hours: birth.getHours(),
-        minutes: birth.getMinutes()
-      })
+      // устанавливаю время рождения из формы
+      birthDate.setHours(Number(hours), Number(minutes))
+
+      const birth = localDateToUtcString(birthDate, 'withoutSeconds')
+
+      const personality = await calcDateUtc(process.env.API_KEY_GOOGLE, process.env.API_KEY_TIMEZONE_DB, rows[0].cityId, birth)
 
       if (personality) {
         // обновляю отчет в БД

@@ -11,9 +11,13 @@ const apiRoute: ApiRoute = async (req, res) => {
   } = req
 
   if (userReportId) {
-    const { sipiumCalc, aminoData } = await apiRequestServer(res, '/api/reports/select', { userId, userReportId, full: true })
+    const { sipiumCalc, dbReportDescriptionData, dbUserReportData } = await apiRequestServer(res, '/api/reports/select', {
+      userId,
+      userReportId,
+      full: true
+    })
 
-    const report = await pdfReport({ sipiumCalc, aminoData })
+    const report = await pdfReport({ sipiumCalc, dbReportDescriptionData, dbUserReportData })
 
     res.setHeader('Content-disposition', `attachment; filename="Sipium Report - ${sipiumCalc.person.name}.pdf"`)
     res.setHeader('Content-Type', 'application/pdf')

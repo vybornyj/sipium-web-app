@@ -9,10 +9,10 @@ import { gatesConsts } from 'src/scripts/@sipium/sipiumData/gatesConsts'
 
 interface Props {
   multiplier: (gateId) => 1 | 0
-  aminoData: dbReportDescriptions
+  dbReportDescriptionData: dbReportDescriptions
 }
 
-export const ProductsGates: FunctionComponent<Props> = ({ multiplier, aminoData }) => (
+export const ProductsGates: FunctionComponent<Props> = ({ multiplier, dbReportDescriptionData }) => (
   <div className='global-box-1400 global-column'>
     <h3 className='global'>Продукты ворот</h3>
 
@@ -35,8 +35,8 @@ export const ProductsGates: FunctionComponent<Props> = ({ multiplier, aminoData 
           <div>{langAminoAcids[convertGateToAminoAcid[gate]].ru}</div>
           <div>{centers[gatesConsts[gate].center - 1].ru}</div>
           <div>{physiologyArr.find(el => el.id === gatesConsts[gate].physiology).ru}</div>
-          <div>{aminoData.find(el => el.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
-          <div>{aminoData.find(el => el.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
+          <div>{dbReportDescriptionData.find(el => el.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
+          <div>{dbReportDescriptionData.find(el => el.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
         </div>
       ))}
     </AppTable>

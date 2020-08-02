@@ -15,20 +15,10 @@ export type sipiumGatesData = {
   basePercents: number
 }[]
 
-interface props {
-  day: number
-  month: number
-  year: number
-  hours: number
-  minutes: number
-}
+type sipiumGates = (personality: string) => Promise<sipiumGatesData>
 
-type sipiumGates = (props: props) => Promise<sipiumGatesData>
-
-export const sipiumGates: sipiumGates = async ({ day, month, year, hours, minutes }) => {
-  const p = new Date(Date.UTC(year, month - 1, day, hours, minutes))
-
-  const designDateTime = await hdDateTime({ trueDateTime: p, planet: 'Sun' })
+export const sipiumGates: sipiumGates = async personality => {
+  const designDateTime = await hdDateTime({ personality, planet: 'Sun' })
   const designPlanetsPositions = await planetsPositions(designDateTime)
 
   return mandalaActivations(designPlanetsPositions)

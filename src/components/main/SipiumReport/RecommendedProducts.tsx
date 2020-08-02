@@ -4,14 +4,20 @@ import { convertGateToAminoAcid } from 'src/scripts/@sipium/convert/convertGateT
 import { langAminoAcids } from 'src/scripts/@sipium/lang/langAminoAcids'
 
 interface Props {
-  aminoData: dbReportDescriptions
+  dbReportDescriptionData: dbReportDescriptions
   aminoacids: number[]
   proteinsActivations: number[]
   fatsActivations: number[]
   carbsActivations: number[]
 }
 
-export const RecommendedProducts: FunctionComponent<Props> = ({ aminoacids, aminoData, proteinsActivations, fatsActivations, carbsActivations }) => {
+export const RecommendedProducts: FunctionComponent<Props> = ({
+  aminoacids,
+  dbReportDescriptionData,
+  proteinsActivations,
+  fatsActivations,
+  carbsActivations
+}) => {
   return (
     <>
       <h3 className='global'>Рекомендованные вам продукты</h3>
@@ -21,7 +27,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({ aminoacids, amin
           <div>Углеводы</div>
           <div>
             {[...new Set(carbsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
@@ -29,7 +35,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({ aminoacids, amin
           <div>Белки</div>
           <div>
             {[...new Set(proteinsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
@@ -37,7 +43,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({ aminoacids, amin
           <div>Жиры</div>
           <div>
             {[...new Set(fatsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => aminoData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>

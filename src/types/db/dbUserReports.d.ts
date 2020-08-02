@@ -3,14 +3,14 @@ interface dbUserReport {
   userId?: number
   cityName?: string
   cityId?: string
-  birth?: Date
-  personality?: Date
+  birth?: string
+  personality?: string
   name?: string
   sex?: boolean
   physActivity?: 1 | 1.2 | 1.375 | 1.55 | 1.725 | 1.9 | number
   height?: number
   weight?: number
-  added?: Date
+  added?: dateIsoString
 }
 
 type dbUserReports = dbUserReport[]
