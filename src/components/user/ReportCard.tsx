@@ -6,10 +6,10 @@ import CardMedia from '@material-ui/core/CardMedia'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import IconGetApp from '@material-ui/icons/GetApp'
+import { renderPrettyUtcDate } from 'deus-date'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 import { AppButton } from 'src/components/common/buttons/AppButton'
-import { renderPrettyUtcDate } from 'src/scripts/@deusdevs/deus-date'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

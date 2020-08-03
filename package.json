@@ -12,7 +12,9 @@
     "_lint-types": "tsc --pretty --noEmit",
     "_test": "jest --config ../.jestrc.js --rootDir .",
     "_type-coverage": "type-coverage --ignore-catch --detail --update",
-    "_upgrade": "ncu -u -x @date-io/date-fns"
+    "_up-check": "npm-check-updates",
+    "_upgrade": "ncu -u -x @date-io/date-fns",
+    "_upgrade-check": "ncu"
   },
   "resolutions": {
     "webpack": "5.0.0-beta.22"
@@ -28,6 +30,7 @@
     "bcryptjs": "2.4.3",
     "clsx": "1.1.1",
     "date-fns": "2.15.0",
+    "deus-date": "deusdevs/deus-date#v0.1.1",
     "next": "9.5.1",
     "next-iron-session": "4.1.7",
     "next-pwa": "3.1.1",

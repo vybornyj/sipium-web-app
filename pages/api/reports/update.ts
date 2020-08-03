@@ -1,9 +1,9 @@
+import { getUtcDateParams } from 'deus-date'
 import SQL from 'sql-template-strings'
 import { calcDateUtc } from 'src/scripts-server/@vybornyj/input-to-utc/calcDateUtc'
 import { pgQuery } from 'src/scripts-server/db/pgQuery'
 import { logger } from 'src/scripts-server/logger/logger'
 import { withSession } from 'src/scripts-server/sessions/withSession'
-import { getUtcDateParams } from 'src/scripts/@deusdevs/deus-date'
 import { ApiRoute } from 'src/types/types-for-import'
 
 interface RequestBody {

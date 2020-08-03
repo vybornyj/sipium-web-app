@@ -1,4 +1,4 @@
-import { renderPrettyUtcDate } from 'src/scripts/@deusdevs/deus-date'
+import { renderPrettyUtcDate } from 'deus-date'
 import { convertGateToAminoAcid } from 'src/scripts/@sipium/convert/convertGateToAminoAcid'
 import { langAminoAcids } from 'src/scripts/@sipium/lang/langAminoAcids'
 

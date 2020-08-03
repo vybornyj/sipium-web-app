@@ -1,6 +1,6 @@
 import childProcess from 'child_process'
+import { getUtcDateParams } from 'deus-date'
 import { logger } from 'src/scripts-server/logger/logger'
-import { getUtcDateParams } from 'src/scripts/@deusdevs/deus-date'
 import util from 'util'
 
 const exec = util.promisify(childProcess.exec)
