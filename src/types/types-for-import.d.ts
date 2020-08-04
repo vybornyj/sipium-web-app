@@ -6,4 +6,7 @@ interface NextApiRequestWrapper<REQ = any> extends NextApiRequest {
   body: REQ
 }
 
-export type ApiRoute<RES = anyObject, REQ = anyObject> = (req: NextApiRequestWrapper<REQ>, res: NextApiResponse<RES>) => Promise<void>
+export type ApiRoute<RES = { [key: string]: any }, REQ = { [key: string]: any }> = (
+  req: NextApiRequestWrapper<REQ>,
+  res: NextApiResponse<RES>
+) => Promise<void>

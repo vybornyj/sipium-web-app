@@ -13,7 +13,7 @@ interface context {
   query: { [key: string]: string }
 }
 
-type handler = (context: context) => Promise<{ props: anyObject }>
+type handler = (context: context) => Promise<{ props: { [key: string]: any } }>
 
 type secure = 'public' | 'user' | 'admin'
 

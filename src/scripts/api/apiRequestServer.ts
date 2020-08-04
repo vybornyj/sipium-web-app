@@ -11,7 +11,11 @@ interface FetchData {
   }
   body?: string
 }
-type ApiRequestServer = <RES = anyObject, REQ = undefined | anyObject>(res: { statusCode: number } | null, url: string, data?: REQ) => Promise<RES>
+type ApiRequestServer = <RES = { [key: string]: any }, REQ = undefined | { [key: string]: any }>(
+  res: { statusCode: number } | null,
+  url: string,
+  data?: REQ
+) => Promise<RES>
 
 export const apiRequestServer: ApiRequestServer = async (res, url, data) => {
   const fetchData: FetchData = {

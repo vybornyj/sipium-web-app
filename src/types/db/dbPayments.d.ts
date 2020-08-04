@@ -1,7 +1,7 @@
 interface dbPayment {
   id?: number
   paymentId?: string
-  purchasesData?: { product: string; purchaseData: anyObject }[]
+  purchasesData?: { product: string; purchaseData: { [key: string]: any } }[]
   email?: string
   added?: string
   provider?: 'stripe' | 'paypal' | 'paddle'

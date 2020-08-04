@@ -103,8 +103,7 @@ export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserRepo
               <td key={key}>
                 {el.cut.map((c, key2) => (
                   <div key={key2} style={{ textIndent: '5px' }}>
-                    {' '}
-                    {c}{' '}
+                    {c}
                   </div>
                 ))}
               </td>
@@ -124,8 +123,7 @@ export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserRepo
               <td key={key}>
                 {el.deficit.map((c, key2) => (
                   <div key={key2} style={{ textIndent: '5px' }}>
-                    {' '}
-                    {c}{' '}
+                    {c}
                   </div>
                 ))}
               </td>
@@ -202,7 +200,6 @@ export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserRepo
       </div> */}
 
       <div>
-        {' '}
         {dbReportDescriptionData &&
           aminoNumbers.map((el, key) => (
             <div key={key} className='acid-item'>

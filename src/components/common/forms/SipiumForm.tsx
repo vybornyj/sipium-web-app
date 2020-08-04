@@ -199,7 +199,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
         </form>
       ) : (
         <form>
-          <h3 className='global'>Enter Data for Calculation</h3>{' '}
+          <h3 className='global'>Enter Data for Calculation</h3>
           <div className='column1023-row1024'>
             {renderInputName()}
             {renderInputEmail()}
@@ -220,8 +220,8 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
             {renderPickerTime()}
           </div>
           <div className='info'>
-            You can change the input fields <strong>Height</strong>, <strong>Weight</strong>, <strong>Physical Activity Level</strong>, and{' '}
-            <strong>Time of birth</strong> after purchase at any time
+            You can change the input fields <strong>Height</strong>, <strong>Weight</strong>, <strong>Physical Activity Level</strong>,
+            <strong> Time of birth</strong> after purchase at any time
           </div>
           <div className='global-center'>
             <AppButton onClick={() => handlerCheckout('free')}>Free (admin only)</AppButton>

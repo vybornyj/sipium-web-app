@@ -3,10 +3,6 @@ type lang = 'en' | 'ru'
 type limit = number
 type dateIsoString = string
 
-interface anyObject {
-  [key: string]: any
-}
-
 interface Currency {
   rates: {
     CAD: number
