@@ -1,38 +1,51 @@
+// deusdevs-nextjs-tsconfig-0.1.0
+// https://www.typescriptlang.org/docs/handbook/compiler-options.html
 {
   "compilerOptions": {
-    "noImplicitAny": false,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": false,
-    "strictFunctionTypes": true,
-    "strictPropertyInitialization": false,
+    "target": "esnext", // Specify ECMAScript target version
+    "module": "esnext", // Specify module code generation: "None", "CommonJS", "AMD", "System", "UMD", "ES6", "ES2015" or "ESNext"
+    "moduleResolution": "node", // Determine how modules get resolved. Either "Node" for Node.js/io.js style resolution, or "Classic"
+    "isolatedModules": true, // Perform additional checks to ensure that separate compilation
+    "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'
+    "baseUrl": ".", // Base directory to resolve non-relative module names
+    "newLine": "lf", // Use the specified end of line sequence to be used when emitting files: "crlf" (windows) or "lf" (unix)
+    "lib": ["esnext", "dom", "dom.iterable"], // List of library files to be included in the compilation
+    "skipLibCheck": true, // Skip type checking of all declaration files (*.d.ts)
+    "noEmit": true, // Do not emit outputs
+    "sourceMap": true, // Generates corresponding .map file
+    "inlineSourceMap": true, // Emit a single file with source maps instead of having a separate file
+    "removeComments": true, // Remove all comments except copy-right header comments beginning with /*!
+    "declaration": true, // Generates corresponding .d.ts file.
+    "allowJs": true, // Allow JavaScript files to be compiled
+    "jsx": "preserve", // Support JSX in .tsx files: "react", "preserve", "react-native"
+    "resolveJsonModule": true, // Include modules imported with .json extension
 
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    // Strict
+    "strict": true, // Enable all strict type-checking options
 
-    "baseUrl": ".",
-    "newLine": "lf",
-    "removeComments": true,
-    "pretty": true,
-    "sourceMap": true,
+    // Strict Type-Checking Options
+    // "noImplicitAny": false, // Raise error on expressions and declarations with an implied 'any' type
+    // "noImplicitThis": true, // Raise error on 'this' expressions with an implied 'any' type
+    // "alwaysStrict": true, // Parse in strict mode and emit "use strict" for each source file
+    // "strictBindCallApply": true, // Enable stricter checking of the bind, call, and apply methods on functions
+    // "strictNullChecks": false, // Enable strict null checks
+    // "strictFunctionTypes": true, // Enable strict checking of function types
+    // "strictPropertyInitialization": true, // Enable strict checking of property initialization in classes
 
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
+    // Additional Checks
+    "noUnusedLocals": true, // Report errors on unused locals
+    "noUnusedParameters": true, // Report errors on unused parameters
+    "noImplicitReturns": true, // Report error when not all code paths in function return a value
+    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
+
+    // Debugging Options
+    "traceResolution": false, // Report module resolution log messages
+    "listEmittedFiles": false, // Print names of generated files part of the compilation
+    "listFiles": false, // Print names of files part of the compilation
+    "pretty": true // Stylize errors and messages using color and context
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": [".logs", ".next", ".yarn", "node_modules", "**/*.test.ts"]
+  "exclude": ["**/.*", "**/*.test.ts"],
+  "compileOnSave": false
 }
