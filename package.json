@@ -1,6 +1,6 @@
 {
   "name": "sipium-web-app",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "author": "Denis Vybornyj <denis.vybornyj@gmail.com> (https://github.com/vybornyj)",
   "contributors": [
@@ -8,16 +8,12 @@
     "Arina Sheleketo <arrinna@inbox.ru> (https://www.instagram.com/arinasheleketo)"
   ],
   "scripts": {
-    "_depcheck": "depcheck",
-    "_lint-types": "tsc --pretty --noEmit",
-    "_test": "jest --config ../.jestrc.js --rootDir .",
-    "_type-coverage": "type-coverage --ignore-catch --detail --update",
-    "_up-check": "npm-check-updates",
-    "_upgrade": "ncu -u -x @date-io/date-fns",
-    "_upgrade-check": "ncu"
+    "build": "next build",
+    "dev": "next -p 80",
+    "start": "next start -p 80"
   },
   "resolutions": {
-    "webpack": "5.0.0-beta.24"
+    "webpack": "5.0.0-beta.26"
   },
   "dependencies": {
     "@date-io/date-fns": "1.3.13",
@@ -25,17 +21,17 @@
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "4.0.0-alpha.56",
     "@material-ui/pickers": "3.2.10",
-    "@stripe/stripe-js": "1.8.0",
+    "@stripe/stripe-js": "1.9.0",
     "@tippyjs/react": "4.1.0",
     "bcryptjs": "2.4.3",
     "clsx": "1.1.1",
     "date-fns": "2.15.0",
     "deus-date": "deusdevs/deus-date#v0.1.2",
-    "next": "9.5.1",
-    "next-iron-session": "4.1.7",
+    "next": "9.5.2",
+    "next-iron-session": "4.1.8",
     "next-pwa": "3.1.1",
     "nodemailer": "6.4.11",
-    "pg": "8.3.0",
+    "pg": "8.3.2",
     "puppeteer-core": "5.2.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -43,14 +39,21 @@
     "sanitize.css": "11.0.1",
     "sitemap": "6.2.0",
     "sql-template-strings": "2.2.2",
-    "stripe": "8.81.0",
+    "stripe": "8.88.0",
     "styled-jsx": "3.3.0",
     "tippy.js": "6.2.6",
     "winston": "3.3.3"
   },
   "devDependencies": {
-    "@types/node": "14.0.27",
-    "@types/react": "16.9.44",
+    "@types/bcryptjs": "2.4.2",
+    "@types/jest": "26.0.10",
+    "@types/node": "14.6.0",
+    "@types/nodemailer": "6.4.0",
+    "@types/pg": "7.14.4",
+    "@types/puppeteer-core": "2.0.0",
+    "@types/react": "16.9.46",
+    "@types/react-dom": "16.9.8",
+    "@types/styled-jsx": "2.2.8",
     "pages": "link:./pages",
     "src": "link:./src",
     "typescript": "3.9.7"
@@ -60,6 +63,6 @@
     "yarn": ">=1.22.4"
   },
   "typeCoverage": {
-    "atLeast": 98.62
+    "atLeast": 98.53
   }
 }
