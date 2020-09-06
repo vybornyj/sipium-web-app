@@ -11,19 +11,19 @@ interface Props {
 }
 
 export const AdminEdit: FunctionComponent<Props> = ({ initDescriptions, descriptionsGroupName }) => {
-  const [descriptions, setDescriptions] = useState<dbReportDescriptions>(initDescriptions.map(a => ({ ...a })))
+  const [descriptions, setDescriptions] = useState<dbReportDescriptions>(initDescriptions.map((a) => ({ ...a })))
 
   const [isChanges, setIsChanges] = useState(0)
 
   const handleSetDescriptions = (value, descriptionId, objectProp) => {
-    descriptions.find(description => description.descriptionId === descriptionId)[objectProp] = value
+    descriptions.find((description) => description.descriptionId === descriptionId)[objectProp] = value
     setDescriptions(descriptions)
     setIsChanges(isChanges + 1)
   }
 
   const handleSave = async () => {
-    let descriptionsForUpdate = descriptions.filter(description => {
-      const initDescription = initDescriptions.find(initDescription => initDescription.descriptionId === description.descriptionId)
+    let descriptionsForUpdate = descriptions.filter((description) => {
+      const initDescription = initDescriptions.find((initDescription) => initDescription.descriptionId === description.descriptionId)
       return description?.descriptionRu !== initDescription?.descriptionRu || description.descriptionEn !== initDescription.descriptionEn
     })
 
@@ -39,17 +39,18 @@ export const AdminEdit: FunctionComponent<Props> = ({ initDescriptions, descript
     const aminoName = langAminoAcids[aminoAcidId].ru
 
     const aminoGatesArray = idsSipiumGates.filter(
-      gate => `amino-products-${convertGateToAminoAcid[gate]}` === descriptionId || `amino-deficit-${convertGateToAminoAcid[gate]}` === descriptionId
+      (gate) =>
+        `amino-products-${convertGateToAminoAcid[gate]}` === descriptionId || `amino-deficit-${convertGateToAminoAcid[gate]}` === descriptionId
     )
 
-    const aminoGatesString = aminoGatesArray.map(gate => ` ${gate} `)
+    const aminoGatesString = aminoGatesArray.map((gate) => ` ${gate} `)
 
     return (
       <Fragment key={descriptionId}>
         <h3>{`${aminoName} (${aminoGatesString})`}</h3>
         <div className='column767-row768'>
-          <textarea value={descriptionRu} onChange={event => handleSetDescriptions(event.currentTarget.value, descriptionId, 'descriptionRu')} />
-          <textarea value={descriptionEn} onChange={event => handleSetDescriptions(event.currentTarget.value, descriptionId, 'descriptionEn')} />
+          <textarea value={descriptionRu} onChange={(event) => handleSetDescriptions(event.currentTarget.value, descriptionId, 'descriptionRu')} />
+          <textarea value={descriptionEn} onChange={(event) => handleSetDescriptions(event.currentTarget.value, descriptionId, 'descriptionEn')} />
         </div>
         <style jsx>{
           /* language=CSS */ `
@@ -97,7 +98,7 @@ export const AdminEdit: FunctionComponent<Props> = ({ initDescriptions, descript
           }
         `
       }</style>
-      {descriptions.map(description => renderDescriptions(description))}
+      {descriptions.map((description) => renderDescriptions(description))}
     </div>
   )
 }

@@ -72,7 +72,7 @@ type MandalaActivations = (
   }[]
 ) => any
 
-export const mandalaActivations: MandalaActivations = ephemeris => {
+export const mandalaActivations: MandalaActivations = (ephemeris) => {
   let planets = []
 
   ephemeris.forEach(({ pos }, planetKey) => {

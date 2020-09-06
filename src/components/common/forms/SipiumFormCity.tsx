@@ -17,7 +17,7 @@ export const SipiumFormCity: FunctionComponent<Props> = ({ city, setCity }) => {
   const [cities, setCities] = useState(city ? [city] : [])
 
   const handleSetCity = (value: string) => {
-    const cityObj = cities.find(x => x.cityName === value)
+    const cityObj = cities.find((x) => x.cityName === value)
     if (cityObj?.cityId) {
       setValue(value)
       setCity({ cityName: value, cityId: cityObj.cityId })
@@ -47,9 +47,9 @@ export const SipiumFormCity: FunctionComponent<Props> = ({ city, setCity }) => {
       onChange={(_, newValue) => handleSetCity(newValue)}
       inputValue={inputValue}
       onInputChange={(_, newInputValue) => handleSetCityInput(newInputValue)}
-      options={cities.map(option => option.cityName)}
+      options={cities.map((option) => option.cityName)}
       style={{ margin: 10, flex: '1 0' }}
-      renderInput={params => <TextField {...params} label='City of Birth' variant='filled' />}
+      renderInput={(params) => <TextField {...params} label='City of Birth' variant='filled' />}
     />
   )
 }

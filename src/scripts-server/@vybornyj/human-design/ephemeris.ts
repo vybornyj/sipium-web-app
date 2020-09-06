@@ -23,7 +23,7 @@ const planetNumByName = {
 }
 
 type GetParams = (date: Date | string) => { hms: string; dmy: string; path: string; exe: string }
-const getParams: GetParams = date => {
+const getParams: GetParams = (date) => {
   const { y, m, d, h, mi, s } = getUtcDateParams(date)
   return {
     hms: `${h}:${mi}:${s}`,
@@ -35,7 +35,7 @@ const getParams: GetParams = date => {
 
 type PlanetsPositions = (date: Date | string) => Promise<{ name: planetName; pos: number }[]>
 
-export const planetsPositions: PlanetsPositions = async date => {
+export const planetsPositions: PlanetsPositions = async (date) => {
   const { hms, dmy, path, exe } = getParams(date)
 
   try {
@@ -45,7 +45,7 @@ export const planetsPositions: PlanetsPositions = async date => {
 
     let planets = []
 
-    stdoutArray.forEach(planet => {
+    stdoutArray.forEach((planet) => {
       const [name, pos] = planet.split(',')
       if (Number(pos)) {
         planets = [

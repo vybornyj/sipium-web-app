@@ -29,11 +29,11 @@ export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, dbRepo
   const { sex, height, weight } = dbUserReportData
 
   const [activity, setActivity] = useState(1.2)
-  const setActivityHandler: onChange = event => {
+  const setActivityHandler: onChange = (event) => {
     setActivity(Number(event.currentTarget.value))
   }
 
-  const multiplier = gateId => (foodGatesNumbers.filter(id => gateId === id).length ? 1 : 0)
+  const multiplier = (gateId) => (foodGatesNumbers.filter((id) => gateId === id).length ? 1 : 0)
 
   return (
     <div>

@@ -14,7 +14,7 @@ export const space: Space = (height, background) => /* language=HTML */ `<tr>
 
 type MailHtmlBase = (inner: string) => string
 
-export const mailHtmlBase: MailHtmlBase = inner => {
+export const mailHtmlBase: MailHtmlBase = (inner) => {
   const background = '#f7f7f7'
   const title = 'Sipium'
   const rights = 'All rights reserved'

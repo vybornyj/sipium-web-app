@@ -7,12 +7,12 @@ import Typography from '@material-ui/core/Typography'
 import IconMenu from '@material-ui/icons/Menu'
 import clsx from 'clsx'
 import Link from 'next/link'
-import React, { FunctionComponent, useState } from 'react'
-import { useGlobal } from 'reactn'
+import { FunctionComponent, useState } from 'react'
 import { LogoSvg } from 'src/components/templates/template-user/LogoSvg'
 import { TemplateUserDrawerInner } from 'src/components/templates/template-user/TemplateUserDrawerInner'
 import { TemplateUserWithReport } from 'src/components/templates/template-user/TemplateUserWithReport'
 import { TemplateHead } from 'src/components/templates/TemplateHead'
+import { useStore } from 'src/scripts/store/useStore'
 
 const drawerWidth = 210
 
@@ -73,7 +73,7 @@ interface Props {
 export const TemplateUser: FunctionComponent<Props> = ({ title, description, userReportId, children }) => {
   const classes = useStyles()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [{ isAdmin }] = useGlobal('storeUser')
+  const { isAdmin } = useStore((state) => state.storeUser)
 
   return (
     <>

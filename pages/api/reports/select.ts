@@ -46,7 +46,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
       descriptionIds = [...dbIdsAminoDeficit, ...dbIdsAminoProducts]
     } else {
       const { aminoacids } = sipiumCalc.food
-      descriptionIds = [...aminoacids.map(el => `amino-products-${el}`), ...aminoacids.map(el => `amino-deficit-${el}`)]
+      descriptionIds = [...aminoacids.map((el) => `amino-products-${el}`), ...aminoacids.map((el) => `amino-deficit-${el}`)]
     }
 
     const { err: err2, rows: dbReportDescriptionData } = await pgQuery<dbReportDescription>(SQL/* language=SQL */ `

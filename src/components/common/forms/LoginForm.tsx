@@ -47,9 +47,9 @@ export const LoginForm: FunctionComponent<Props> = ({ target, initialEmail }) =>
   // data
   const [isNoPassword, setIsNoPassword] = useState(false)
 
-  const handleChangeEmail: onChange = event => setEmail(event.target.value.slice(0, 255))
+  const handleChangeEmail: onChange = (event) => setEmail(event.target.value.slice(0, 255))
 
-  const handleChangePassword: onChange = event => setPassword(event.target.value)
+  const handleChangePassword: onChange = (event) => setPassword(event.target.value)
 
   const handleSubmitEmail = async () => {
     const emailIsValid = validateEmail(email)

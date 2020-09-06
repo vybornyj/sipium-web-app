@@ -6,7 +6,7 @@ type usersInsert = (email: dbUser['email']) => Promise<dbUser['userId'] | null>
 
 const __path__ = 'src/scripts-server/db/usersInsert.ts: '
 
-export const usersInsert: usersInsert = async email => {
+export const usersInsert: usersInsert = async (email) => {
   const { err, rowCount, rows } = await pgQuery<dbUser>(SQL/* language=SQL */ `
     INSERT INTO "users"
            ("email")

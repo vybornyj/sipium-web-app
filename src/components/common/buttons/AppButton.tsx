@@ -40,7 +40,7 @@ export interface AppButtonProps extends ButtonProps {
   stl?: 'min' | string
 }
 
-export const AppButton: FunctionComponent<AppButtonProps> = props => {
+export const AppButton: FunctionComponent<AppButtonProps> = (props) => {
   const router = useRouter()
 
   const { onClick, onMouseEnter, onContextMenu, children, href = '/', stl = 'main', style = {}, ...otherProps } = props
@@ -61,7 +61,6 @@ export const AppButton: FunctionComponent<AppButtonProps> = props => {
   const renderInner = () => (
     <Button
       role='link'
-      tabIndex={0}
       className={className}
       onClick={onClick}
       onMouseEnter={onMouseEnter}

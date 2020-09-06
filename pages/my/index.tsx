@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Error from 'pages/404'
+import Error from 'next/error'
 import { TemplateUser } from 'src/components/templates/template-user/TemplateUser'
 import { ReportCard } from 'src/components/user/ReportCard'
 import { withSspWrapper } from 'src/scripts-server/sessions/withSspWrapper'
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = ({ error, reports }) => {
-  if (error) return <Error />
+  if (error) return <Error statusCode={404} />
 
   return (
     <TemplateUser title='My Reports'>

@@ -34,9 +34,9 @@ export const ProductsGates: FunctionComponent<Props> = ({ multiplier, dbReportDe
           <div>{multiplier(gate)}</div>
           <div>{langAminoAcids[convertGateToAminoAcid[gate]].ru}</div>
           <div>{centers[gatesConsts[gate].center - 1].ru}</div>
-          <div>{physiologyArr.find(el => el.id === gatesConsts[gate].physiology).ru}</div>
-          <div>{dbReportDescriptionData.find(el => el.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
-          <div>{dbReportDescriptionData.find(el => el.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
+          <div>{physiologyArr.find((el) => el.id === gatesConsts[gate].physiology).ru}</div>
+          <div>{dbReportDescriptionData.find((el) => el.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
+          <div>{dbReportDescriptionData.find((el) => el.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu}</div>
         </div>
       ))}
     </AppTable>

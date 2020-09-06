@@ -20,7 +20,7 @@ type funcAddReport = (data: {
   isAdmin: dbUser['isAdmin']
 }>
 
-export const funcAddReport: funcAddReport = async data => {
+export const funcAddReport: funcAddReport = async (data) => {
   const { email, cityId, birth, ...otherReportData } = data
   const personality = await calcDateUtc(process.env.API_KEY_GOOGLE, process.env.API_KEY_TIMEZONE_DB, cityId, birth)
 

@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer-core'
 import ReactDOMServer from 'react-dom/server'
 
-export const printPdf = async element => {
+export const printPdf = async (element) => {
   const html = ReactDOMServer.renderToStaticMarkup(element)
   const browser = await puppeteer.launch({ executablePath: process.env.PATH_CHROMIUM, args: ['--no-sandbox'] })
   const page = await browser.newPage()

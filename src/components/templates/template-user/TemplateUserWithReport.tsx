@@ -4,7 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import IconGetApp from '@material-ui/icons/GetApp'
 import IconMoreVert from '@material-ui/icons/MoreVert'
 import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent, MouseEvent, useState } from 'react'
 import { AppButton } from 'src/components/common/buttons/AppButton'
 
 interface Props {
@@ -12,10 +12,10 @@ interface Props {
 }
 
 export const TemplateUserWithReport: FunctionComponent<Props> = ({ userReportId }) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
 

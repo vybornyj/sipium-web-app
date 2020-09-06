@@ -1,20 +1,20 @@
 type HotReplacer = (string: string) => string
 
-export const hotReplacerEnName: HotReplacer = string => {
+export const hotReplacerEnName: HotReplacer = (string) => {
   return string.length > 0 && string[0] !== ' '
     ? string
         .replace(/[^. A-Za-z]/g, '')
         .replace(/ {2,}/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase())
+        .replace(/\b\w/g, (l) => l.toUpperCase())
         .slice(0, 32)
     : ''
 }
 
-export const hotReplacerHeightWeight: HotReplacer = string => {
+export const hotReplacerHeightWeight: HotReplacer = (string) => {
   return string.length > 0 && string[0] !== ' ' ? string.replace(/[^0-9]/g, '').slice(0, 3) : ''
 }
 
-export const hotReplacerRu: HotReplacer = string => {
+export const hotReplacerRu: HotReplacer = (string) => {
   return string.length > 0 && string[0] !== ' '
     ? string
         .replace(/[^\-‐‑‒–—―`!?@#$%^&*()+№:=<>{}'",. 0-9А-ЯЁа-яё]/g, '')
@@ -23,7 +23,7 @@ export const hotReplacerRu: HotReplacer = string => {
     : ''
 }
 
-export const hotReplacerUrl: HotReplacer = string => {
+export const hotReplacerUrl: HotReplacer = (string) => {
   return string
     .trim()
     .toLowerCase()
@@ -31,7 +31,7 @@ export const hotReplacerUrl: HotReplacer = string => {
     .replace(/-{2,}/g, '-')
 }
 
-export const hotReplacerPrice: HotReplacer = string => {
+export const hotReplacerPrice: HotReplacer = (string) => {
   if (string && string[0] === '.') return ''
   if (string && string[0] === '0') {
     if (typeof string[1] === 'string') {

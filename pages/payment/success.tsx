@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Error from 'pages/404'
+import Error from 'next/error'
 import { useEffect, useState } from 'react'
 import { TemplateUserRedirectLoading } from 'src/components/templates/template-user/TemplateUserRedirectLoading'
 import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
@@ -23,10 +23,10 @@ const Page: NextPage<Props> = ({ id }) => {
       })()
     }, [])
 
-    return idNotFound ? <Error /> : <TemplateUserRedirectLoading />
+    return idNotFound ? <Error statusCode={404} /> : <TemplateUserRedirectLoading />
   }
 
-  return <Error />
+  return <Error statusCode={404} />
 }
 
 Page.getInitialProps = async ({ query: { id } }) => ({ id })

@@ -19,7 +19,7 @@ interface paymentStripeData {
 
 type paymentStripe = ({ product, price, currency, success_url, cancel_url, errorCallback }: paymentStripeData) => Promise<null | string>
 
-export const paymentStripe: paymentStripe = async ({ product, price, currency, success_url, cancel_url, errorCallback = _ => null }) => {
+export const paymentStripe: paymentStripe = async ({ product, price, currency, success_url, cancel_url, errorCallback = (_) => null }) => {
   // todo: ???
   let sessionId: null | string = null
 

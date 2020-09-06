@@ -6,7 +6,7 @@ type userReportsSelectUserReportId = (userId: dbUserReport['userId']) => Promise
 
 const __path__ = 'src/scripts-server/db/userReportsSelectUserReportId.ts: '
 
-export const userReportsSelectUserReportId: userReportsSelectUserReportId = async userId => {
+export const userReportsSelectUserReportId: userReportsSelectUserReportId = async (userId) => {
   const { err, rowCount, rows } = await pgQuery<dbUserReport>(SQL/* language=SQL */ `
     SELECT "userReportId"
     FROM "userReports"

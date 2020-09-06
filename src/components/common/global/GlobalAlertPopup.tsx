@@ -1,11 +1,10 @@
 import { FunctionComponent, useState } from 'react'
-import { useDispatch, useGlobal } from 'reactn'
 import { useDidUpdate } from 'src/scripts/hooks/useDidUpdate'
+import { useStore } from 'src/scripts/store/useStore'
 
 export const GlobalAlertPopup: FunctionComponent = () => {
-  const [storeAlertPopup] = useGlobal('storeAlertPopup')
-  const STORE_SET_ALERT_POPUP = useDispatch('STORE_SET_ALERT_POPUP')
-
+  const storeAlertPopup = useStore((state) => state.storeAlertPopup)
+  const STORE_SET_ALERT_POPUP = useStore((state) => state.STORE_SET_ALERT_POPUP)
   const [timeoutID, setTimeoutID] = useState<ReturnType<typeof setTimeout>>(null)
 
   useDidUpdate(() => {

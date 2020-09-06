@@ -30,14 +30,14 @@ export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<si
   const age = Math.abs(new Date(Date.now() - selectedDate.getTime()).getUTCFullYear() - 1970)
 
   // Получаем массив ворот нужного вида из пришедших активаций
-  const gatesArr = idsSipiumGates.filter(gate => designMandalaActivations.find(g => g.gate === gate))
+  const gatesArr = idsSipiumGates.filter((gate) => designMandalaActivations.find((g) => g.gate === gate))
 
   // Номера ворот
-  const foodGatesNumbers = gatesArr.map(gate => gate)
-  const proteinsActivations = gatesArr.filter(gate => gatesConsts[gate].foodType === 1)
-  const fatsActivations = gatesArr.filter(gate => gatesConsts[gate].foodType === 2)
-  const carbsActivations = gatesArr.filter(gate => gatesConsts[gate].foodType === 3)
-  const aminoacids = [...new Set(gatesArr.map(gate => convertGateToAminoAcid[gate]))]
+  const foodGatesNumbers = gatesArr.map((gate) => gate)
+  const proteinsActivations = gatesArr.filter((gate) => gatesConsts[gate].foodType === 1)
+  const fatsActivations = gatesArr.filter((gate) => gatesConsts[gate].foodType === 2)
+  const carbsActivations = gatesArr.filter((gate) => gatesConsts[gate].foodType === 3)
+  const aminoacids = [...new Set(gatesArr.map((gate) => convertGateToAminoAcid[gate]))]
 
   let totalProteinsActivations = [...new Set(proteinsActivations)].length
   let totalFatsActivations = [...new Set(fatsActivations)].length
@@ -110,8 +110,8 @@ export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<si
 
   const pillsFoodSum =
     acidsInFood
-      .map(el => el.pills / el.chicken)
-      .map(el => el)
+      .map((el) => el.pills / el.chicken)
+      .map((el) => el)
       .reduce(function (a, b) {
         return a + b
       }) / acidsInFood.length

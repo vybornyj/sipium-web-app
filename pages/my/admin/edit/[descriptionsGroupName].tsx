@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Error from 'pages/404'
+import Error from 'next/error'
 import { AdminEdit } from 'src/components/AdminEdit'
 import { TemplateUser } from 'src/components/templates/template-user/TemplateUser'
 import { withSspWrapper } from 'src/scripts-server/sessions/withSspWrapper'
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = ({ error, descriptions, descriptionsGroupName }) => {
-  if (error) return <Error />
+  if (error) return <Error statusCode={404} />
 
   return (
     <TemplateUser title={`Edit: ${descriptionsGroupName} (left: rus, right: eng)`}>

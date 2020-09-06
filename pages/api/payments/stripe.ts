@@ -59,7 +59,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
 
   if (rowCount) {
     const stripeSessionId = await paymentStripe({
-      errorCallback: err => logger.error(`${__path__}paymentStripe: ${err}`),
+      errorCallback: (err) => logger.error(`${__path__}paymentStripe: ${err}`),
       success_url: `${process.env.URL_APP}/payment/success?id=${rows[0].paymentId}`,
       cancel_url: `${process.env.URL_APP}/payment/cancel`,
       product,

@@ -9,12 +9,12 @@ import { loadStripe } from '@stripe/stripe-js'
 import { localDateToUtcString, utcStringToLocalDate } from 'deus-date'
 import getConfig from 'next/config'
 import { useRouter } from 'next/router'
-import React, { FunctionComponent, useState } from 'react'
-import { useDispatch } from 'reactn'
+import { FunctionComponent, useState } from 'react'
 import { AppButton } from 'src/components/common/buttons/AppButton'
 import { SipiumFormCity } from 'src/components/common/forms/SipiumFormCity'
 import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
 import { hotReplacerEnName, hotReplacerHeightWeight } from 'src/scripts/helpers/hotReplacers'
+import { useStore } from 'src/scripts/store/useStore'
 
 const {
   publicRuntimeConfig: { API_PUBLIC_KEY_STRIPE }
@@ -32,7 +32,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
   const initDate = new Date()
   initDate.setFullYear(initDate.getFullYear() - 30)
 
-  const STORE_SET_ALERT_POPUP = useDispatch('STORE_SET_ALERT_POPUP')
+  const STORE_SET_ALERT_POPUP = useStore((state) => state.STORE_SET_ALERT_POPUP)
   const router = useRouter()
   const [name, setName] = useState(dbUserReportData?.name ?? '')
   const [email, setEmail] = useState(userEmail ?? '')
@@ -44,10 +44,10 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
   const [weight, setWeight] = useState(dbUserReportData?.weight ?? '70')
   const [selectedDate, handleDateChange] = useState<Date>(dbUserReportData?.birth ? utcStringToLocalDate(dbUserReportData?.birth) : initDate)
 
-  const handleSetName: onChange = event => setName(hotReplacerEnName(event.target.value))
-  const handleSetEmail: onChange = event => setEmail(event.target.value)
-  const handleSetHeight: onChange = event => setHeight(hotReplacerHeightWeight(event.target.value))
-  const handleSetWeight: onChange = event => setWeight(hotReplacerHeightWeight(event.target.value))
+  const handleSetName: onChange = (event) => setName(hotReplacerEnName(event.target.value))
+  const handleSetEmail: onChange = (event) => setEmail(event.target.value)
+  const handleSetHeight: onChange = (event) => setHeight(hotReplacerHeightWeight(event.target.value))
+  const handleSetWeight: onChange = (event) => setWeight(hotReplacerHeightWeight(event.target.value))
 
   const handleSubmitUpdate = async () => {
     const data = {
@@ -128,7 +128,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
   const renderSelectSex = () => (
     <FormControl variant='filled' style={{ margin: 10, flex: '1 0' }}>
       <InputLabel id='select-label-sex'>Sex</InputLabel>
-      <Select labelId='select-label-sex' value={sex} onChange={event => setSex(event.target.value ? 1 : 0)}>
+      <Select labelId='select-label-sex' value={sex} onChange={(event) => setSex(event.target.value ? 1 : 0)}>
         <MenuItem value={0}>Female</MenuItem>
         <MenuItem value={1}>Male</MenuItem>
       </Select>
@@ -140,7 +140,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
       <Select
         labelId='select-label-phys'
         value={physActivity}
-        onChange={event => setPhysActivity(event.target.value ? Number(event.target.value) : 1)}
+        onChange={(event) => setPhysActivity(event.target.value ? Number(event.target.value) : 1)}
       >
         <MenuItem value={1}>No workouts</MenuItem>
         <MenuItem value={1.2}>2-3 workouts a week, not strength</MenuItem>

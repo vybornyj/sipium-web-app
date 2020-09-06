@@ -13,7 +13,7 @@ export const PillsFood: FunctionComponent<Props> = ({ pillsFoodSum }) => (
       <div>Таблетки</div>
       <div>Куриная грудка</div>
     </div>
-    {acidsInFood.map(el => (
+    {acidsInFood.map((el) => (
       <div key={el.id}>
         <div>{el.ru}</div>
         <div>{el.pills.toFixed(3)}</div>

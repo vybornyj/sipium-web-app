@@ -6,7 +6,7 @@ type usersSelect = (email: dbUser['email']) => Promise<dbUser>
 
 const __path__ = 'src/scripts-server/db/usersSelect.ts: '
 
-export const usersSelect: usersSelect = async email => {
+export const usersSelect: usersSelect = async (email) => {
   const { err, rowCount, rows } = await pgQuery<dbUser>(SQL/* language=SQL */ `
     SELECT "userId", "password", "isAdmin"
     FROM "users"

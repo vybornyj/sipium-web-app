@@ -11,6 +11,7 @@ export const pdfReport = ({ sipiumCalc, dbReportDescriptionData, dbUserReportDat
   return printPdf(
     <html>
       <head>
+        <link rel='preload' href='https://fonts.googleapis.com/css?family=Fira+Sans:400,600&display=swap&subset=cyrillic' as='style' />
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Fira+Sans:400,600&display=swap&subset=cyrillic' />
         <style dangerouslySetInnerHTML={{ __html: `html { font-family: 'Fira Sans', sans-serif; }` }} />
         <style>{

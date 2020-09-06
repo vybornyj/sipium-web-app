@@ -34,7 +34,7 @@ export const SipiumCalcData: FunctionComponent<Props> = ({ sipiumCalc, foodGates
           <div>Активации ворот</div>
         </div>
         <div>
-          <div>{foodGatesNumbers.map(el => el + ' ')}</div>
+          <div>{foodGatesNumbers.map((el) => el + ' ')}</div>
         </div>
       </AppTable>
 
@@ -127,12 +127,12 @@ export const SipiumCalcData: FunctionComponent<Props> = ({ sipiumCalc, foodGates
 
       <AppTable max>
         <div>
-          {sinusoidCalorieDaysWeek.map(el => (
+          {sinusoidCalorieDaysWeek.map((el) => (
             <div key={el.id}>{el.ru}</div>
           ))}
         </div>
         <div>
-          {sinusoidCalorieDaysWeek.map(el => (
+          {sinusoidCalorieDaysWeek.map((el) => (
             <div key={el.id}>{(el.rate * 100).toFixed()}%</div>
           ))}
         </div>

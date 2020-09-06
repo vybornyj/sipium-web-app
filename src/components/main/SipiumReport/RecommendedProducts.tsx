@@ -26,24 +26,24 @@ export const RecommendedProducts: FunctionComponent<Props> = ({
         <div>
           <div>Углеводы</div>
           <div>
-            {[...new Set(carbsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+            {[...new Set(carbsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
         <div>
           <div>Белки</div>
           <div>
-            {[...new Set(proteinsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+            {[...new Set(proteinsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>
         <div>
           <div>Жиры</div>
           <div>
-            {[...new Set(fatsActivations.map(gate => convertGateToAminoAcid[gate]))].map(
-              el => dbReportDescriptionData.find(a => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+            {[...new Set(fatsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
             )}
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Error from 'pages/404'
+import Error from 'next/error'
 import { SipiumForm } from 'src/components/common/forms/SipiumForm'
 import { SipiumReportUser } from 'src/components/main/SipiumReportUser'
 import { TemplateUser } from 'src/components/templates/template-user/TemplateUser'
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Page: NextPage<Props> = ({ error, userReportId, sipiumCalc, dbReportDescriptionData, dbUserReportData }) => {
-  if (error) return <Error />
+  if (error) return <Error statusCode={404} />
 
   return (
     <TemplateUser title={`Report: ${dbUserReportData.name}`} userReportId={userReportId}>

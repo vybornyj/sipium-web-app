@@ -18,9 +18,9 @@ import clsx from 'clsx'
 import getConfig from 'next/config'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { FunctionComponent, ReactNode } from 'react'
-import { useDispatch, useGlobal } from 'reactn'
+import { FunctionComponent, ReactNode } from 'react'
 import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
+import { useStore } from 'src/scripts/store/useStore'
 
 const {
   publicRuntimeConfig: { RUNTIME_VERSION }
@@ -99,10 +99,10 @@ export const TemplateUserDrawerInner: FunctionComponent<Props> = ({ isAdmin }) =
   const router = useRouter()
   const classes = useStyles()
 
-  const [storeCollapseEditDescriptions] = useGlobal('storeCollapseEditDescriptions')
-  const [storeCollapseDev] = useGlobal('storeCollapseDev')
-  const STORE_SET_COLLAPSE_EDIT_DESCRIPTIONS = useDispatch('STORE_SET_COLLAPSE_EDIT_DESCRIPTIONS')
-  const STORE_SET_COLLAPSE_DEV = useDispatch('STORE_SET_COLLAPSE_DEV')
+  const storeCollapseEditDescriptions = useStore((state) => state.storeCollapseEditDescriptions)
+  const storeCollapseDev = useStore((state) => state.storeCollapseDev)
+  const STORE_SET_COLLAPSE_EDIT_DESCRIPTIONS = useStore((state) => state.STORE_SET_COLLAPSE_EDIT_DESCRIPTIONS)
+  const STORE_SET_COLLAPSE_DEV = useStore((state) => state.STORE_SET_COLLAPSE_DEV)
 
   const handleLogout = async () => {
     await apiRequestClient('/api/auth/logout')
@@ -111,7 +111,7 @@ export const TemplateUserDrawerInner: FunctionComponent<Props> = ({ isAdmin }) =
 
   type getMenuItems = (menuItems: { title: string; href: string; as?: string; icon: any }[]) => ReactNode
 
-  const getMenuItems: getMenuItems = menuItems =>
+  const getMenuItems: getMenuItems = (menuItems) =>
     menuItems.map(({ href, as, title, icon }) => (
       <Link href={href} as={as ?? href} key={href}>
         <a>
@@ -187,7 +187,7 @@ export const TemplateUserDrawerInner: FunctionComponent<Props> = ({ isAdmin }) =
       </List>
 
       <Typography className={classes.dividerText} color='textSecondary' display='block' variant='caption'>
-        Sipium Web App {RUNTIME_VERSION}
+        Sipium Web App v{RUNTIME_VERSION}
       </Typography>
     </>
   )

@@ -1,13 +1,9 @@
-// Данный файл отрабатывает единожды на серверной стороне
-//
-// Онлайн генераторы иконок:
 // https://realfavicongenerator.net
 // http://romannurik.github.io/AndroidAssetStudio/index.html
-
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class AppDocument extends Document {
-  public static getInitialProps = async ctx => await Document.getInitialProps(ctx)
+  public static getInitialProps = async (ctx) => await Document.getInitialProps(ctx)
 
   public render = () => {
     const appName = 'Sipium'
@@ -39,6 +35,7 @@ class AppDocument extends Document {
           <meta name='msapplication-TileColor' content={appMainColor} />
 
           {/* google font */}
+          <link rel='preload' href='https://fonts.googleapis.com/css?family=Fira+Sans:400,600&display=swap&subset=cyrillic' as='style' />
           <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Fira+Sans:400,600&display=swap&subset=cyrillic' />
 
           {/* чтобы шрифт был использован как можно раньше */}

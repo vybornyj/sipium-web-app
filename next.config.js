@@ -6,8 +6,12 @@ module.exports = {
     API_PUBLIC_KEY_STRIPE: process.env.API_PUBLIC_KEY_STRIPE,
     RUNTIME_VERSION: process.env.RUNTIME_VERSION
   },
-  compress: false, // Node.js compression
-  poweredByHeader: false // x-powered-by: Next.js
+  compress: false,
+  devIndicators: {
+    autoPrerender: false
+  },
+  poweredByHeader: false,
+  reactStrictMode: false
   // pwa: {
   //   dest: 'public',
   //   distDir: 'public',

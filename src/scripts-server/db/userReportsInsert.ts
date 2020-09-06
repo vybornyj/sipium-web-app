@@ -6,7 +6,7 @@ type userReportsInsert = (data: dbUserReport) => Promise<boolean>
 
 const __path__ = 'src/scripts-server/db/userReportsInsert.ts: '
 
-export const userReportsInsert: userReportsInsert = async data => {
+export const userReportsInsert: userReportsInsert = async (data) => {
   const { userReportId, userId, cityName, cityId, birth, personality, name, sex, physActivity, height, weight } = data
 
   const { err, rowCount } = await pgQuery<dbUserReport>(SQL/* language=SQL */ `

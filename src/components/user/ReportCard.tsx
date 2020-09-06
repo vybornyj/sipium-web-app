@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import IconGetApp from '@material-ui/icons/GetApp'
 import { renderPrettyUtcDate } from 'deus-date'
 import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { AppButton } from 'src/components/common/buttons/AppButton'
 
 const useStyles = makeStyles((theme: Theme) =>

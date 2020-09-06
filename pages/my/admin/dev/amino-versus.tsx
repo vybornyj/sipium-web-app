@@ -16,15 +16,15 @@ const Page: NextPage = () => (
         <div>
           <h3 className='global'>All Amino Acids vs All Gates vs Sipium</h3>
           <AppTable>
-            {idsAminoAcids.map(aminoAcid => {
+            {idsAminoAcids.map((aminoAcid) => {
               let gates = convertAminoAcidToGates[aminoAcid]
               gates.sort((a, b) => a - b)
-              const className = String(idsSipiumGates.some(r => gates.includes(r)))
+              const className = String(idsSipiumGates.some((r) => gates.includes(r)))
               return (
                 <div key={aminoAcid}>
                   <div className={className}>{langAminoAcids[aminoAcid].en}</div>
                   <div className={className}>{langAminoAcids[aminoAcid].ru}</div>
-                  {gates.map(gate => (
+                  {gates.map((gate) => (
                     <span key='gate' className={String(idsSipiumGates.includes(gate))}>{` ${gate} `}</span>
                   ))}
                 </div>
@@ -35,7 +35,7 @@ const Page: NextPage = () => (
         <div>
           <h3 className='global'>All Gates vs All Amino Acids vs Sipium</h3>
           <AppTable>
-            {idsGates.map(gate => {
+            {idsGates.map((gate) => {
               const className = String(idsSipiumGates.includes(gate))
               return (
                 <div key={gate}>

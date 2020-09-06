@@ -1,9 +1,9 @@
 import { FunctionComponent, useEffect } from 'react'
-import { useDispatch } from 'reactn'
 import { GlobalAlertPopup } from 'src/components/common/global/GlobalAlertPopup'
+import { useStore } from 'src/scripts/store/useStore'
 
 export const GlobalWrapper: FunctionComponent = ({ children }) => {
-  const STORE_LOAD_USER_SESSION = useDispatch('STORE_LOAD_USER_SESSION')
+  const STORE_LOAD_USER_SESSION = useStore((state) => state.STORE_LOAD_USER_SESSION)
 
   useEffect(() => {
     STORE_LOAD_USER_SESSION()

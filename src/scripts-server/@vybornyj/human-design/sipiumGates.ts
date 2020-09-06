@@ -17,7 +17,7 @@ export type sipiumGatesData = {
 
 type sipiumGates = (personality: string) => Promise<sipiumGatesData>
 
-export const sipiumGates: sipiumGates = async personality => {
+export const sipiumGates: sipiumGates = async (personality) => {
   const designDateTime = await hdDateTime({ personality, planet: 'Sun' })
   const designPlanetsPositions = await planetsPositions(designDateTime)
 
