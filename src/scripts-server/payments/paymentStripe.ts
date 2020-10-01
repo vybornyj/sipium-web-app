@@ -1,7 +1,7 @@
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.API_KEY_STRIPE, {
-  apiVersion: '2020-03-02',
+  apiVersion: '2020-08-27',
   maxNetworkRetries: 2,
   timeout: 20000,
   protocol: 'https',
