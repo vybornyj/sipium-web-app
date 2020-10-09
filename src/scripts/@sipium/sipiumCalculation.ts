@@ -13,7 +13,7 @@ import {
   PLUS_MINUS_FATS_DEFICIT,
   PLUS_MINUS_PROTEINS_CUT,
   PLUS_MINUS_PROTEINS_DEFICIT,
-  sinusoidCalorieDaysWeek
+  sinusoidCalorieDaysWeek,
 } from 'src/scripts/@sipium/data'
 import { idsSipiumGates } from 'src/scripts/@sipium/enums/idsSipiumGates'
 import { gatesConsts } from 'src/scripts/@sipium/sipiumData/gatesConsts'
@@ -97,7 +97,7 @@ export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<si
     intertrochantericSize = 1,
     closedKneeWidth = 1,
     minShinCircumference = 1,
-    minForearmCircumference = 1
+    minForearmCircumference = 1,
   ) => {
     return (
       3.14 *
@@ -167,22 +167,22 @@ export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<si
         (pfceDaysWeekTemp(3, index + 1, 1, 3) / DEFAULT_MULTIPLIER).toFixed(),
         (pfceDaysWeekTemp(3, index + 1, 2, 3) / FATS_MULTIPLIER).toFixed(),
         (pfceDaysWeekTemp(3, index + 1, 3, 3) / DEFAULT_MULTIPLIER).toFixed(),
-        (pfceDaysWeekTemp(3, index + 1, 4, 3) / DEFAULT_MULTIPLIER).toFixed()
+        (pfceDaysWeekTemp(3, index + 1, 4, 3) / DEFAULT_MULTIPLIER).toFixed(),
       ],
       deficit: [
         pfceDaysWeekSum(2, index + 1, 2).toFixed(),
         (pfceDaysWeekTemp(2, index + 1, 1, 2) / DEFAULT_MULTIPLIER).toFixed(),
         (pfceDaysWeekTemp(2, index + 1, 2, 2) / FATS_MULTIPLIER).toFixed(),
         (pfceDaysWeekTemp(2, index + 1, 3, 2) / DEFAULT_MULTIPLIER).toFixed(),
-        (pfceDaysWeekTemp(2, index + 1, 4, 2) / DEFAULT_MULTIPLIER).toFixed()
+        (pfceDaysWeekTemp(2, index + 1, 4, 2) / DEFAULT_MULTIPLIER).toFixed(),
       ],
       standard: [
         pfceDaysWeekSum(1, index + 1, 1).toFixed(),
         pfceDaysWeekTemp(1, index + 1, 1, 1).toFixed(),
         pfceDaysWeekTemp(1, index + 1, 2, 1).toFixed(),
         pfceDaysWeekTemp(1, index + 1, 3, 1).toFixed(),
-        pfceDaysWeekTemp(1, index + 1, 4, 1).toFixed()
-      ]
+        pfceDaysWeekTemp(1, index + 1, 4, 1).toFixed(),
+      ],
     }
   })
 
@@ -193,64 +193,64 @@ export const sipiumCalculation = async ({ dbUserReportData }: props): Promise<si
       foodGatesNumbers,
       proteinsActivations,
       fatsActivations,
-      carbsActivations
+      carbsActivations,
     },
     primary: {
       activationWeight,
       totalActivationsWeight,
       percentResult,
-      gatesArr
+      gatesArr,
     },
     other: {
       weightWithoutFats,
       mainExchangeWithLoads,
       pillsFoodSum,
-      pfceDaysWeekArr
+      pfceDaysWeekArr,
     },
     totalActivations: {
       totalProteinsActivations,
       totalFatsActivations,
-      totalCarbsActivations
+      totalCarbsActivations,
     },
     totalPercent: {
       totalProteinsPercent,
       totalFatsPercent,
       totalCarbsPercent,
-      totalCellulosePercent
+      totalCellulosePercent,
     },
     totalInDietDeficit: {
       totalInDietProteinsDeficit,
       totalInDietFatsDeficit,
       totalInDietCarbsDeficit,
-      totalInDietCelluloseDeficit
+      totalInDietCelluloseDeficit,
     },
     totalInDietCut: {
       totalInDietProteinsCut,
       totalInDietFatsCut,
       totalInDietCarbsCut,
-      totalInDietCelluloseCut
+      totalInDietCelluloseCut,
     },
     avgDistribution: {
       avgProteinsDistribution,
       avgFatsDistribution,
       avgCarbsDistribution,
-      avgCelluloseDistribution
+      avgCelluloseDistribution,
     },
     minimumInDiet: {
       minimumInDietProteins,
       minimumInDietFats,
       minimumInDietCarbs,
-      minimumInDietCellulose
+      minimumInDietCellulose,
     },
     totalNeedNutrOnActiveGate: {
       totalNeedNutrOnActiveGateProteins,
       totalNeedNutrOnActiveGateFats,
-      totalNeedNutrOnActiveGateCarbs
+      totalNeedNutrOnActiveGateCarbs,
     },
     totalNeedNutrOnGate: {
       totalNeedNutrOnGateProteins,
       totalNeedNutrOnGateFats,
-      totalNeedNutrOnGateCarbs
-    }
+      totalNeedNutrOnGateCarbs,
+    },
   }
 }

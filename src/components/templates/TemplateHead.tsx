@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { FunctionComponent } from 'react'
 
 const {
-  publicRuntimeConfig: { URL_APP }
+  publicRuntimeConfig: { URL_APP },
 }: GetConfig = getConfig()
 
 interface Props {

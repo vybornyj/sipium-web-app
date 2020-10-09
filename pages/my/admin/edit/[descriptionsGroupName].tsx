@@ -42,7 +42,7 @@ export const getServerSideProps = withSspWrapper('admin', async ({ res, params }
 
     if (descriptions) {
       return {
-        props: { descriptions, descriptionsGroupName }
+        props: { descriptions, descriptionsGroupName },
       }
     }
   }

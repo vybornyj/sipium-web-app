@@ -24,7 +24,7 @@ export const SipiumReportAdmin: FunctionComponent<Props> = ({ sipiumCalc, dbRepo
     totalNeedNutrOnActiveGate,
     totalNeedNutrOnGate,
     food: { foodGatesNumbers },
-    other: { weightWithoutFats, mainExchangeWithLoads, pillsFoodSum, pfceDaysWeekArr }
+    other: { weightWithoutFats, mainExchangeWithLoads, pillsFoodSum, pfceDaysWeekArr },
   } = sipiumCalc
   const { sex, height, weight } = dbUserReportData
 

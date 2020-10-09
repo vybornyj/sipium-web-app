@@ -20,13 +20,15 @@ export const PdfReportPage1 = ({ sipiumCalc, dbReportDescriptionData, dbUserRepo
   const aminoImg = [...new Set(gatesArr.map((gate) => langAminoAcids[convertGateToAminoAcid[gate]].en.split(' ')[0].toLowerCase()))]
   const aminoProducts = [
     ...new Set(
-      gatesArr.map((gate) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
-    )
+      gatesArr.map(
+        (gate) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${convertGateToAminoAcid[gate]}`)?.descriptionRu,
+      ),
+    ),
   ]
   const aminoDeficit = [
     ...new Set(
-      gatesArr.map((gate) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu)
-    )
+      gatesArr.map((gate) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-deficit-${convertGateToAminoAcid[gate]}`)?.descriptionRu),
+    ),
   ]
 
   return (

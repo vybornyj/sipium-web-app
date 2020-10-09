@@ -5,7 +5,7 @@ import { ApiRoute } from 'src/types/types-for-import'
 
 const apiRoute: ApiRoute = async (req, res) => {
   const {
-    query: { action, userReportId }
+    query: { action, userReportId },
   } = req
 
   if (action === 'download' || action === 'view') {
@@ -15,7 +15,7 @@ const apiRoute: ApiRoute = async (req, res) => {
       const { sipiumCalc, dbReportDescriptionData, dbUserReportData } = await apiRequestServer(res, '/api/reports/select', {
         userId,
         userReportId,
-        full: true
+        full: true,
       })
 
       const report = await pdfReport({ sipiumCalc, dbReportDescriptionData, dbUserReportData })

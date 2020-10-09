@@ -4,86 +4,86 @@
 export const langAminoAcids = {
   1: {
     en: 'Alanine',
-    ru: 'Аланин'
+    ru: 'Аланин',
   },
   2: {
     en: 'Arginine',
-    ru: 'Аргинин'
+    ru: 'Аргинин',
   },
   3: {
     en: 'Asparagine',
-    ru: 'Аспарагин'
+    ru: 'Аспарагин',
   },
   4: {
     en: 'Aspartic acid',
-    ru: 'Аспарагиновая кислота'
+    ru: 'Аспарагиновая кислота',
   },
   5: {
     en: 'Cysteine', // -
-    ru: 'Цистеин'
+    ru: 'Цистеин',
   },
   6: {
     en: 'Glutamic acid', // -
-    ru: 'Глутаминовая кислота'
+    ru: 'Глутаминовая кислота',
   },
   7: {
     en: 'Glutamine',
-    ru: 'Глутамин'
+    ru: 'Глутамин',
   },
   8: {
     en: 'Glycine', // -
-    ru: 'Глицин'
+    ru: 'Глицин',
   },
   9: {
     en: 'Histidine',
-    ru: 'Гистидин'
+    ru: 'Гистидин',
   },
   10: {
     en: 'Isoleucine',
-    ru: 'Изолейцин'
+    ru: 'Изолейцин',
   },
   11: {
     en: 'Leucine',
-    ru: 'Лейцин'
+    ru: 'Лейцин',
   },
   12: {
     en: 'Lysine',
-    ru: 'Лизин'
+    ru: 'Лизин',
   },
   13: {
     en: 'Methionine',
-    ru: 'Метионин'
+    ru: 'Метионин',
   },
   14: {
     en: 'Phenylalanine',
-    ru: 'Фенилаланин'
+    ru: 'Фенилаланин',
   },
   15: {
     en: 'Proline',
-    ru: 'Пролин'
+    ru: 'Пролин',
   },
   16: {
     en: 'Serine',
-    ru: 'Серин'
+    ru: 'Серин',
   },
   17: {
     en: 'Threonine',
-    ru: 'Треонин'
+    ru: 'Треонин',
   },
   18: {
     en: 'Tryptophan',
-    ru: 'Триптофан'
+    ru: 'Триптофан',
   },
   19: {
     en: 'Tyrosine', // -
-    ru: 'Тирозин'
+    ru: 'Тирозин',
   },
   20: {
     en: 'Valine',
-    ru: 'Валин'
+    ru: 'Валин',
   },
   21: {
     en: 'Stop codon',
-    ru: 'Стоп-кодон'
-  }
+    ru: 'Стоп-кодон',
+  },
 }

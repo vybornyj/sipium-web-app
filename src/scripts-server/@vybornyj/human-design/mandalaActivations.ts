@@ -62,14 +62,14 @@ const mandalaGatesSequence = [
   63,
   22,
   36,
-  25
+  25,
 ]
 
 type MandalaActivations = (
   ephemeris: {
     name: 'Sun' | 'Moon' | 'Mercury' | 'Venus' | 'Mars' | 'Jupiter' | 'Saturn' | 'Uranus' | 'Neptune' | 'Pluto' | 'trueNode' | 'Chiron'
     pos: number
-  }[]
+  }[],
 ) => any
 
 export const mandalaActivations: MandalaActivations = (ephemeris) => {
@@ -114,8 +114,8 @@ export const mandalaActivations: MandalaActivations = (ephemeris) => {
         linePercents: Number(linePercents.toFixed(2)),
         colorPercents: Number(colorPercents.toFixed(2)),
         tonePercents: Number(tonePercents.toFixed(2)),
-        basePercents: Number(basePercents.toFixed(2))
-      }
+        basePercents: Number(basePercents.toFixed(2)),
+      },
     ]
   })
 

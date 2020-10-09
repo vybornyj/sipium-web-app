@@ -62,5 +62,5 @@ export const idsGates: number[] = [
   61,
   62,
   63,
-  64
+  64,
 ]

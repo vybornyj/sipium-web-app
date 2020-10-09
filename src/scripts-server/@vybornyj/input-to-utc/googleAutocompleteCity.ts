@@ -10,8 +10,8 @@ export const googleAutocompleteCity: googleAutocompleteCity = async (googleApiKe
         ['types', '(cities)'],
         ['language', language],
         ['key', googleApiKey],
-        ['input', encodeURIComponent(city)]
-      ])
+        ['input', encodeURIComponent(city)],
+      ]),
     )
 
     const responseJson: {

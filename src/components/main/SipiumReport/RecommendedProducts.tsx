@@ -16,7 +16,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({
   dbReportDescriptionData,
   proteinsActivations,
   fatsActivations,
-  carbsActivations
+  carbsActivations,
 }) => {
   return (
     <>
@@ -27,7 +27,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({
           <div>Углеводы</div>
           <div>
             {[...new Set(carbsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
-              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu,
             )}
           </div>
         </div>
@@ -35,7 +35,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({
           <div>Белки</div>
           <div>
             {[...new Set(proteinsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
-              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu,
             )}
           </div>
         </div>
@@ -43,7 +43,7 @@ export const RecommendedProducts: FunctionComponent<Props> = ({
           <div>Жиры</div>
           <div>
             {[...new Set(fatsActivations.map((gate) => convertGateToAminoAcid[gate]))].map(
-              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu
+              (el) => dbReportDescriptionData.find((a) => a.descriptionId === `amino-products-${el}`)?.descriptionRu,
             )}
           </div>
         </div>

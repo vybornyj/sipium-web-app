@@ -8,5 +8,5 @@ interface NextApiRequestWrapper<REQ = any> extends NextApiRequest {
 
 export type ApiRoute<RES = { [key: string]: any }, REQ = { [key: string]: any }> = (
   req: NextApiRequestWrapper<REQ>,
-  res: NextApiResponse<RES>
+  res: NextApiResponse<RES>,
 ) => Promise<void>

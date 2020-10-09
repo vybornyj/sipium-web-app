@@ -12,8 +12,8 @@ export const timezoneDbGetGmtOffset: timezoneDbGetGmtOffset = async (timezoneDbA
         ['lat', lat],
         ['lng', lng],
         ['time', String(timeStamp)],
-        ['key', timezoneDbApiKey]
-      ])
+        ['key', timezoneDbApiKey],
+      ]),
     )
 
     const responseJson: {

@@ -62,5 +62,5 @@ export const convertGateToAminoAcid: { [key: number]: number } = {
   61: 10,
   62: 19,
   63: 15,
-  64: 8
+  64: 8,
 }

@@ -9,22 +9,22 @@ export const logger = createLogger({
     new transports.File({
       filename: process.env.PATH_LOG_ERROR,
       format: combine(timestamp(), fileFormat),
-      level: 'error'
+      level: 'error',
     }),
     new transports.File({
       filename: process.env.PATH_LOG_WARN,
       format: combine(timestamp(), fileFormat),
-      level: 'warn'
-    })
+      level: 'warn',
+    }),
   ],
-  exitOnError: false
+  exitOnError: false,
 })
 
 if (!process.env.RUNTIME_IS_PRODUCTION) {
   logger.add(
     new transports.Console({
       format: combine(format.colorize(), timestamp(), consoleFormat),
-      level: 'info'
-    })
+      level: 'info',
+    }),
   )
 }

@@ -9,21 +9,21 @@ const styles = {
     margin: '16px 8px 8px 8px',
     padding: '8px 24px',
     background: 'linear-gradient(45deg, hsl(210, 90%, 40%) 30%, hsl(190, 90%, 40%) 90%)',
-    color: 'hsl(0, 0%, 100%)'
+    color: 'hsl(0, 0%, 100%)',
   },
   card: {
     transition: '0.15s all ease-out',
     margin: 4,
     padding: '4px 12px',
     border: '1px solid hsl(210, 90%, 95%)',
-    color: 'hsl(210, 90%, 65%)'
+    color: 'hsl(210, 90%, 65%)',
   },
   toolbar: {
     transition: '0.15s all ease-out',
     margin: 4,
     padding: '4px 12px',
-    color: 'hsl(0, 0%, 100%)'
-  }
+    color: 'hsl(0, 0%, 100%)',
+  },
 }
 
 export interface AppButtonProps extends ButtonProps {

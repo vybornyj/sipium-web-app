@@ -19,7 +19,7 @@ const formMessages = {
   forgotDefault: 'Click send and we will send you an email with further instructions for resetting your password.',
   forgotMailSend: 'We have sent you an email, follow the instructions in the email to reset your password.',
 
-  serverError: 'Server error (or you are offline)'
+  serverError: 'Server error (or you are offline)',
 }
 
 interface Props {

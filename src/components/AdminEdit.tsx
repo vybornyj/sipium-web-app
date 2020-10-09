@@ -40,7 +40,7 @@ export const AdminEdit: FunctionComponent<Props> = ({ initDescriptions, descript
 
     const aminoGatesArray = idsSipiumGates.filter(
       (gate) =>
-        `amino-products-${convertGateToAminoAcid[gate]}` === descriptionId || `amino-deficit-${convertGateToAminoAcid[gate]}` === descriptionId
+        `amino-products-${convertGateToAminoAcid[gate]}` === descriptionId || `amino-deficit-${convertGateToAminoAcid[gate]}` === descriptionId,
     )
 
     const aminoGatesString = aminoGatesArray.map((gate) => ` ${gate} `)
@@ -83,7 +83,7 @@ export const AdminEdit: FunctionComponent<Props> = ({ initDescriptions, descript
           position: 'fixed',
           top: 65,
           right: isChanges ? 10 : -50,
-          opacity: isChanges ? 1 : 0
+          opacity: isChanges ? 1 : 0,
         }}
       >
         Save

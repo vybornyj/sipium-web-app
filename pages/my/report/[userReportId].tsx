@@ -38,8 +38,8 @@ export const getServerSideProps = withSspWrapper('user', async ({ req, res, para
           userReportId,
           sipiumCalc,
           dbReportDescriptionData,
-          dbUserReportData
-        }
+          dbUserReportData,
+        },
       }
     }
   }

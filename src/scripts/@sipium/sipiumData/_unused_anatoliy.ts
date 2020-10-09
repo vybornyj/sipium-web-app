@@ -6,7 +6,7 @@ export const anatoliy = [
     center: 4,
     physiology: 11,
     products: 4,
-    deficit: 4
+    deficit: 4,
   },
   {
     id: 55,
@@ -15,7 +15,7 @@ export const anatoliy = [
     center: 9,
     physiology: 9,
     products: 10,
-    deficit: 10
+    deficit: 10,
   },
   {
     id: 60,
@@ -24,7 +24,7 @@ export const anatoliy = [
     center: 5,
     physiology: 18,
     products: 11,
-    deficit: 11
+    deficit: 11,
   },
   {
     id: 58,
@@ -33,7 +33,7 @@ export const anatoliy = [
     center: 5,
     physiology: 23,
     products: 9,
-    deficit: 9
+    deficit: 9,
   },
   {
     id: 58,
@@ -42,6 +42,6 @@ export const anatoliy = [
     center: 5,
     physiology: 23,
     products: 9,
-    deficit: 9
-  }
+    deficit: 9,
+  },
 ]

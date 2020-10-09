@@ -31,7 +31,7 @@ export const getServerSideProps = withSspWrapper('admin', async ({ req, res, par
     const { sipiumCalc, dbReportDescriptionData, dbUserReportData } = await apiRequestServer(res, '/api/reports/select', {
       userId,
       userReportId,
-      full: true
+      full: true,
     })
 
     if (sipiumCalc) {
@@ -40,8 +40,8 @@ export const getServerSideProps = withSspWrapper('admin', async ({ req, res, par
           userReportId,
           sipiumCalc,
           dbReportDescriptionData,
-          dbUserReportData
-        }
+          dbUserReportData,
+        },
       }
     }
   }

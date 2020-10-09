@@ -1,3 +1,3 @@
 module.exports = {
-  reject: ['@date-io/date-fns']
+  reject: ['@date-io/date-fns'],
 }

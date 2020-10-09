@@ -5,7 +5,7 @@ const stripe = new Stripe(process.env.API_KEY_STRIPE, {
   maxNetworkRetries: 2,
   timeout: 20000,
   protocol: 'https',
-  telemetry: false
+  telemetry: false,
 })
 
 interface paymentStripeData {
@@ -31,16 +31,16 @@ export const paymentStripe: paymentStripe = async ({ product, price, currency, s
           price_data: {
             currency,
             product_data: {
-              name: product
+              name: product,
             },
-            unit_amount: price
+            unit_amount: price,
           },
-          quantity: 1
-        }
+          quantity: 1,
+        },
       ],
       mode: 'payment',
       success_url,
-      cancel_url
+      cancel_url,
     })
     sessionId = session.id
   } catch (err) {

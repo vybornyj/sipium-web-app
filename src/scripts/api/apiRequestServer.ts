@@ -1,7 +1,7 @@
 import getConfig from 'next/config'
 
 const {
-  publicRuntimeConfig: { URL_APP }
+  publicRuntimeConfig: { URL_APP },
 }: GetConfig = getConfig()
 
 interface FetchData {
@@ -14,15 +14,15 @@ interface FetchData {
 type ApiRequestServer = <RES = { [key: string]: any }, REQ = undefined | { [key: string]: any }>(
   res: { statusCode: number } | null,
   url: string,
-  data?: REQ
+  data?: REQ,
 ) => Promise<RES>
 
 export const apiRequestServer: ApiRequestServer = async (res, url, data) => {
   const fetchData: FetchData = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   }
 
   if (data) fetchData.body = JSON.stringify(data)

@@ -38,16 +38,16 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
     sex,
     physActivity,
     height,
-    weight
+    weight,
   }
 
   const jcontainer = {
     purchasesData: [
       {
         purchaseName: product,
-        purchaseData
-      }
-    ]
+        purchaseData,
+      },
+    ],
   }
 
   const { rowCount, rows } = await pgQuery<dbPayment>(SQL/* language=SQL */ `
@@ -64,7 +64,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
       cancel_url: `${process.env.URL_APP}/payment/cancel`,
       product,
       currency,
-      price
+      price,
     })
 
     if (stripeSessionId) {

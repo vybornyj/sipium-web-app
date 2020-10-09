@@ -34,8 +34,8 @@ export const getServerSideProps = withSspWrapper('public', async ({ req, query }
     props: {
       userId,
       email,
-      target
-    }
+      target,
+    },
   }
 })
 

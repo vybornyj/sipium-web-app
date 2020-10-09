@@ -19,49 +19,49 @@ const drawerWidth = 210
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     hide: {
-      display: 'none'
+      display: 'none',
     },
     hideDown960: {
       [theme.breakpoints.down('sm')]: {
-        display: 'none'
-      }
+        display: 'none',
+      },
     },
     hideUp959: {
       [theme.breakpoints.up('md')]: {
-        display: 'none'
-      }
+        display: 'none',
+      },
     },
     appBar: {
       width: '100%',
       marginLeft: drawerWidth,
       background: 'linear-gradient(45deg, hsl(210, 90%, 25%) 30%, hsl(190, 90%, 25%) 90%)',
       [theme.breakpoints.up('md')]: {
-        width: `calc(100% - ${drawerWidth}px)`
-      }
+        width: `calc(100% - ${drawerWidth}px)`,
+      },
     },
     menuButton: {
-      marginRight: 36
+      marginRight: 36,
     },
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
       whiteSpace: 'nowrap',
       [theme.breakpoints.down('sm')]: {
-        display: 'none'
-      }
+        display: 'none',
+      },
     },
     drawerPaper: {
       background: 'linear-gradient(45deg, hsl(230, 90%, 25%) 30%, hsl(210, 90%, 25%) 90%)',
       color: 'white',
       textWeight: 'bold',
-      width: drawerWidth
+      width: drawerWidth,
     },
     toolbar: theme.mixins.toolbar,
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3)
-    }
-  })
+      padding: theme.spacing(3),
+    },
+  }),
 )
 
 interface Props {
@@ -105,10 +105,10 @@ export const TemplateUser: FunctionComponent<Props> = ({ title, description, use
           open={mobileOpen}
           onClose={() => setMobileOpen(false)}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile
+            keepMounted: true, // Better open performance on mobile
           }}
         >
           <TemplateUserDrawerInner isAdmin={isAdmin} />
@@ -118,7 +118,7 @@ export const TemplateUser: FunctionComponent<Props> = ({ title, description, use
           anchor='left'
           className={classes.drawer}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           <div className={classes.toolbar}>

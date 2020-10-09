@@ -17,7 +17,7 @@ import { hotReplacerEnName, hotReplacerHeightWeight } from 'src/scripts/helpers/
 import { useStore } from 'src/scripts/store/useStore'
 
 const {
-  publicRuntimeConfig: { API_PUBLIC_KEY_STRIPE }
+  publicRuntimeConfig: { API_PUBLIC_KEY_STRIPE },
 }: GetConfig = getConfig()
 
 const stripePromise = loadStripe(API_PUBLIC_KEY_STRIPE)
@@ -56,7 +56,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
       name,
       physActivity,
       height,
-      weight
+      weight,
     }
     const { error } = await apiRequestClient('/api/reports/update', data)
 
@@ -79,7 +79,7 @@ export const SipiumForm: FunctionComponent<Props> = ({ userEmail, dbUserReportDa
         sex,
         physActivity,
         height,
-        weight
+        weight,
       }
       if (provider === 'stripe-test') {
         const { stripeSessionId } = await apiRequestClient('/api/payments/stripe', data)

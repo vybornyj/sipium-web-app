@@ -220,6 +220,6 @@ export const pdfReport = ({ sipiumCalc, dbReportDescriptionData, dbUserReportDat
         </div>
         <PdfReportPage1 sipiumCalc={sipiumCalc} dbReportDescriptionData={dbReportDescriptionData} dbUserReportData={dbUserReportData} />
       </body>
-    </html>
+    </html>,
   )
 }

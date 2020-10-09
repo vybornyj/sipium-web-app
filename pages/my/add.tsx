@@ -17,7 +17,7 @@ export const getServerSideProps = withSspWrapper('user', async ({ req }) => {
   const { email = null }: sessionUser = req?.session?.get('user') ?? {}
 
   return {
-    props: { email }
+    props: { email },
   }
 })
 

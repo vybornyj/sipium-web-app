@@ -8,8 +8,8 @@ export const googleGetCoordinates: googleGetCoordinates = async (googleApiKey, p
     const response = await fetch(
       urlJoiner('https://maps.googleapis.com/maps/api/geocode/json', [
         ['key', googleApiKey],
-        ['place_id', place_id]
-      ])
+        ['place_id', place_id],
+      ]),
     )
 
     const responseJson: {
@@ -28,7 +28,7 @@ export const googleGetCoordinates: googleGetCoordinates = async (googleApiKey, p
     if (responseJson.status === 'OK') {
       return {
         lat: responseJson.results[0].geometry.location.lat,
-        lng: responseJson.results[0].geometry.location.lng
+        lng: responseJson.results[0].geometry.location.lng,
       }
     } else {
       logger.error(`src/scripts-server/input-to-utc/googleGetCoordinates.ts: ${responseJson.status}, ${responseJson.error_message}`)

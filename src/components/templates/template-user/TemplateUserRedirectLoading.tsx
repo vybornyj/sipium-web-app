@@ -10,9 +10,9 @@ const useStyles = makeStyles(() =>
       alignItems: 'center',
       justifyContent: 'center',
       width: '100%',
-      height: '50vh'
-    }
-  })
+      height: '50vh',
+    },
+  }),
 )
 
 export const TemplateUserRedirectLoading: FunctionComponent = () => {

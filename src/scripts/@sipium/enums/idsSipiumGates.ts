@@ -35,5 +35,5 @@ export const idsSipiumGates: number[] = [
   57,
   58,
   60,
-  61
+  61,
 ]

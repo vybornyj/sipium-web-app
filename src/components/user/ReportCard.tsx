@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: 10,
 
       [theme.breakpoints.down('xs')]: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     media: {
-      height: 60
-    }
-  })
+      height: 60,
+    },
+  }),
 )
 
 interface Props {

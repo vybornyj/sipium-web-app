@@ -40,8 +40,8 @@ export const TemplateUserWithReport: FunctionComponent<Props> = ({ userReportId 
         PaperProps={{
           style: {
             maxHeight: 48 * 4.5,
-            width: 214
-          }
+            width: 214,
+          },
         }}
       >
         <Link href='/api/pdf/view/[userReportId]' as={`/api/pdf/view/${userReportId}`}>

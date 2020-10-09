@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { TemplateMain } from 'src/components/templates/template-main/TemplateMain'
 import { withSspWrapper } from 'src/scripts-server/sessions/withSspWrapper'
 import { apiRequestServer } from 'src/scripts/api/apiRequestServer'
+
 interface Props {
   redirect: string
 }
@@ -34,7 +35,7 @@ export const getServerSideProps = withSspWrapper('public', async ({ params, req,
   const { redirect = null, sessionDestroy } = await apiRequestServer(res, '/api/tokens', { token: params.token })
   if (sessionDestroy) await req.session.destroy()
   return {
-    props: { redirect }
+    props: { redirect },
   }
 })
 

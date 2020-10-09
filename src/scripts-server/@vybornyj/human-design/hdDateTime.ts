@@ -4,7 +4,12 @@ type ModSec = (date: Date, seconds: number) => Date
 
 const modSec: ModSec = (date: Date, milliseconds: number) => new Date(date.setSeconds(date.getSeconds() + milliseconds))
 
-type HdDateTime = (options: { personality: string; planet: 'Sun' | 'Moon' | 'Saturn'; isReturn?: boolean; modifySeconds?: number }) => Promise<string>
+type HdDateTime = (options: {
+  personality: Date | string
+  planet: 'Sun' | 'Moon' | 'Saturn'
+  isReturn?: boolean
+  modifySeconds?: number
+}) => Promise<string>
 
 export const hdDateTime: HdDateTime = async ({ personality, planet, isReturn = false, modifySeconds = 0 }) => {
   let trueDateTime = new Date(personality)

@@ -15,5 +15,5 @@ export const dbIdsAminoDeficit: string[] = [
   'amino-deficit-17',
   'amino-deficit-18',
   'amino-deficit-20',
-  'amino-deficit-21'
+  'amino-deficit-21',
 ]

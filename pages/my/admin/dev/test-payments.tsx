@@ -8,7 +8,7 @@ import { withSspWrapper } from 'src/scripts-server/sessions/withSspWrapper'
 import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
 
 const {
-  publicRuntimeConfig: { API_PUBLIC_KEY_STRIPE }
+  publicRuntimeConfig: { API_PUBLIC_KEY_STRIPE },
 }: GetConfig = getConfig()
 
 const stripePromise = loadStripe(API_PUBLIC_KEY_STRIPE)
@@ -52,7 +52,7 @@ export const getServerSideProps = withSspWrapper('admin', async ({ req }) => {
   const { email = null }: sessionUser = req?.session?.get('user') ?? {}
 
   return {
-    props: { email }
+    props: { email },
   }
 })
 

@@ -8,7 +8,7 @@ import {
   PLUS_MINUS_FATS_DEFICIT,
   PLUS_MINUS_PROTEINS_CUT,
   PLUS_MINUS_PROTEINS_DEFICIT,
-  sinusoidCalorieDaysWeek
+  sinusoidCalorieDaysWeek,
 } from 'src/scripts/@sipium/data'
 
 interface Props {

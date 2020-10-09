@@ -12,17 +12,17 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
       width: '100%',
-      background: 'linear-gradient(45deg, hsl(220deg 83% 24%) 30%, hsl(249deg 79% 15%) 90%)'
+      background: 'linear-gradient(45deg, hsl(220deg 83% 24%) 30%, hsl(249deg 79% 15%) 90%)',
     },
     menuButton: {
-      marginRight: 36
+      marginRight: 36,
     },
     toolbar: theme.mixins.toolbar,
     content: {
       flexGrow: 1,
-      padding: theme.spacing(3)
-    }
-  })
+      padding: theme.spacing(3),
+    },
+  }),
 )
 
 interface Props {

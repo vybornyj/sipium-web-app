@@ -15,5 +15,5 @@ export const dbIdsAminoProducts: string[] = [
   'amino-products-17',
   'amino-products-18',
   'amino-products-20',
-  'amino-products-21'
+  'amino-products-21',
 ]

@@ -17,11 +17,11 @@ export const useStore = create(
         isDefined: false,
         isLogin: false,
         isAdmin: false,
-        email: ''
+        email: '',
       },
       storeAlertPopup,
       storeCollapseEditDescriptions: false,
-      storeCollapseDev: false
+      storeCollapseDev: false,
     },
     (set, get) => ({
       STORE_LOAD_USER_SESSION: async () => {
@@ -31,13 +31,13 @@ export const useStore = create(
             isDefined: true,
             isLogin: !!email,
             isAdmin: !!isAdmin,
-            email: email ?? ''
-          }
+            email: email ?? '',
+          },
         }))
       },
       STORE_SET_ALERT_POPUP: async (storeAlertPopup: storeAlertPopup) => set(() => ({ storeAlertPopup })),
       STORE_SET_COLLAPSE_EDIT_DESCRIPTIONS: async () => set(() => ({ storeCollapseEditDescriptions: !get().storeCollapseEditDescriptions })),
-      STORE_SET_COLLAPSE_DEV: async () => set(() => ({ storeCollapseDev: !get().storeCollapseDev }))
-    })
-  )
+      STORE_SET_COLLAPSE_DEV: async () => set(() => ({ storeCollapseDev: !get().storeCollapseDev })),
+    }),
+  ),
 )

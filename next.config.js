@@ -4,14 +4,14 @@ module.exports = {
   publicRuntimeConfig: {
     URL_APP: process.env.URL_APP,
     API_PUBLIC_KEY_STRIPE: process.env.API_PUBLIC_KEY_STRIPE,
-    RUNTIME_VERSION: process.env.RUNTIME_VERSION
+    RUNTIME_VERSION: process.env.RUNTIME_VERSION,
   },
   compress: false,
   devIndicators: {
-    autoPrerender: false
+    autoPrerender: false,
   },
   poweredByHeader: false,
-  reactStrictMode: false
+  reactStrictMode: false,
   // pwa: {
   //   dest: 'public',
   //   distDir: 'public',

@@ -7,7 +7,7 @@ const pool = new Pool({
   port: Number(process.env.POSTGRESQL_PORT),
   user: process.env.POSTGRESQL_USER,
   password: process.env.POSTGRESQL_PASS,
-  database: process.env.POSTGRESQL_DB
+  database: process.env.POSTGRESQL_DB,
 })
 
 interface PgQueryResult<ROW = { [key: string]: any }> {

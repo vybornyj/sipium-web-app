@@ -19,7 +19,7 @@ const planetNumByName = {
   Neptune: '8',
   Pluto: '9',
   trueNode: 't',
-  Chiron: 'D'
+  Chiron: 'D',
 }
 
 type GetParams = (date: Date | string) => { hms: string; dmy: string; path: string; exe: string }
@@ -29,7 +29,7 @@ const getParams: GetParams = (date) => {
     hms: `${h}:${mi}:${s}`,
     dmy: `${d}.${m}.${y}`,
     path: process.env.PATH_SWE,
-    exe: process.env.PATH_SWE_EXE
+    exe: process.env.PATH_SWE_EXE,
   }
 }
 
@@ -52,8 +52,8 @@ export const planetsPositions: PlanetsPositions = async (date) => {
           ...planets,
           {
             name: name.replace(/\s/g, ''),
-            pos: Number(pos)
-          }
+            pos: Number(pos),
+          },
         ]
       }
     })

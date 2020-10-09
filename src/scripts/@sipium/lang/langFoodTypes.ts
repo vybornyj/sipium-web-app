@@ -1,14 +1,14 @@
 export const langFoodTypes = {
   1: {
     en: 'Proteins',
-    ru: 'Белки'
+    ru: 'Белки',
   },
   2: {
     en: 'Fats',
-    ru: 'Жиры'
+    ru: 'Жиры',
   },
   3: {
     en: 'Carbs',
-    ru: 'Углеводы'
-  }
+    ru: 'Углеводы',
+  },
 }

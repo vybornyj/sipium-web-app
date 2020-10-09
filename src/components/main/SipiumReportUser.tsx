@@ -14,7 +14,7 @@ export const SipiumReportUser: FunctionComponent<Props> = ({ sipiumCalc, dbRepor
   const {
     age,
     primary: { gatesArr },
-    other: { pfceDaysWeekArr }
+    other: { pfceDaysWeekArr },
   } = sipiumCalc
   const { sex, height, weight } = dbUserReportData
   /* const { aminoacids, proteinsActivations, fatsActivations, carbsActivations } = sipiumCalc.food */

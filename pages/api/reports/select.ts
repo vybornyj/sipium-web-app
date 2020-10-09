@@ -59,7 +59,7 @@ const apiRoute: ApiRoute<ResponseBody, RequestBody> = async (req, res) => {
       res.status(200).json({
         sipiumCalc,
         dbReportDescriptionData,
-        dbUserReportData
+        dbUserReportData,
       })
     } else {
       logger.error(`${__path__}err: ${err}`)

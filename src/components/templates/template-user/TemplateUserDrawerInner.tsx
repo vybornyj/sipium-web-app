@@ -23,36 +23,36 @@ import { apiRequestClient } from 'src/scripts/api/apiRequestClient'
 import { useStore } from 'src/scripts/store/useStore'
 
 const {
-  publicRuntimeConfig: { RUNTIME_VERSION }
+  publicRuntimeConfig: { RUNTIME_VERSION },
 }: GetConfig = getConfig()
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawerIcon: {
       color: 'white',
-      minWidth: '40px'
+      minWidth: '40px',
     },
     divider: {
-      backgroundColor: 'hsla(0, 0%, 100%, 0.12)'
+      backgroundColor: 'hsla(0, 0%, 100%, 0.12)',
     },
     dividerText: {
       margin: `5px 0 0 ${theme.spacing(2)}px`,
-      color: 'hsla(0, 0%, 100%, 0.5)'
-    }
-  })
+      color: 'hsla(0, 0%, 100%, 0.5)',
+    },
+  }),
 )
 
 const TemplateUserMenuItems = [
   {
     title: 'My Reports',
     href: '/my',
-    icon: <IconRecentActors />
+    icon: <IconRecentActors />,
   },
   {
     title: 'Add Report',
     href: '/my/add',
-    icon: <IconAdd />
-  }
+    icon: <IconAdd />,
+  },
 ]
 
 const TemplateUserMenuItemsAdmin = [
@@ -60,35 +60,35 @@ const TemplateUserMenuItemsAdmin = [
     title: 'Amino Products',
     href: '/my/admin/edit/[descriptionsGroupName]',
     as: '/my/admin/edit/amino-products',
-    icon: <IconEdit />
+    icon: <IconEdit />,
   },
   {
     title: 'Amino Deficit',
     href: '/my/admin/edit/[descriptionsGroupName]',
     as: '/my/admin/edit/amino-deficit',
-    icon: <IconEdit />
-  }
+    icon: <IconEdit />,
+  },
 ]
 
 const TemplateUserMenuItemsAdminDev = [
   {
     title: 'Amino Versus',
     href: '/my/admin/dev/amino-versus',
-    icon: <IconRemoveRedEye />
+    icon: <IconRemoveRedEye />,
   },
   {
     title: 'Test Payments',
     href: '/my/admin/dev/test-payments',
-    icon: <IconRemoveRedEye />
-  }
+    icon: <IconRemoveRedEye />,
+  },
 ]
 
 const TemplateUserMenuItemsAccount = [
   {
     title: 'Settings',
     href: '/my/settings',
-    icon: <IconSettings />
-  }
+    icon: <IconSettings />,
+  },
 ]
 
 interface Props {

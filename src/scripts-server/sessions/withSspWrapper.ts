@@ -38,7 +38,7 @@ const withSspWrapper2: withSspWrapper2 = (secure, handler: handler) => {
         res.setHeader('Location', `/login?target=${req?.url ?? ''}`)
         res.statusCode = 307
         return {
-          props: { error: true }
+          props: { error: true },
         }
       }
 
@@ -48,7 +48,7 @@ const withSspWrapper2: withSspWrapper2 = (secure, handler: handler) => {
           res.setHeader('Location', `/404`)
           res.statusCode = 404
           return {
-            props: { error: true }
+            props: { error: true },
           }
         }
       }
@@ -61,7 +61,7 @@ const withSspWrapper2: withSspWrapper2 = (secure, handler: handler) => {
     } else {
       res.statusCode = 404
       return {
-        props: { error: true }
+        props: { error: true },
       }
     }
   }
