@@ -7,7 +7,7 @@
     "Arina Sheleketo <arrinna@inbox.ru> (https://www.instagram.com/arinasheleketo)"
   ],
   "resolutions": {
-    "webpack": "^5.0.0-rc.4"
+    "webpack": "^5.0.0"
   },
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
@@ -21,7 +21,7 @@
     "clsx": "^1.1.1",
     "date-fns": "^2.16.1",
     "deus-date": "deusdevs/deus-date#v0.1.3",
-    "next": "^9.5.4",
+    "next": "^9.5.5",
     "next-iron-session": "^4.1.9",
     "next-pwa": "^3.1.5",
     "nodemailer": "^6.4.13",
@@ -32,9 +32,9 @@
     "sanitize.css": "^12.0.1",
     "sitemap": "^6.3.2",
     "sql-template-strings": "^2.2.2",
-    "stripe": "^8.108.0",
+    "stripe": "^8.109.0",
     "styled-jsx": "^3.3.0",
-    "tippy.js": "^6.2.6",
+    "tippy.js": "^6.2.7",
     "winston": "^3.3.3",
     "zustand": "^3.1.3"
   },
@@ -45,7 +45,7 @@
     "@types/nodemailer": "^6.4.0",
     "@types/pg": "^7.14.5",
     "@types/puppeteer-core": "^2.0.0",
-    "@types/react": "^16.9.51",
+    "@types/react": "^16.9.52",
     "@types/react-dom": "^16.9.8",
     "@types/styled-jsx": "^2.2.8",
     "pages": "link:./pages",
