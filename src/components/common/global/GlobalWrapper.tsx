@@ -36,7 +36,7 @@ export const GlobalWrapper: FunctionComponent = ({ children }) => {
           }
 
           :focus {
-            outline: none;
+            outline: none !important;
           }
 
           html {

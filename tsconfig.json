@@ -15,7 +15,7 @@
     "moduleResolution": "node", // Determine how modules get resolved. Either "Node" for Node.js/io.js style resolution, or "Classic"
     "resolveJsonModule": true, // Include modules imported with .json extension
     "isolatedModules": true, // Perform additional checks to ensure that separate compilation
-    "jsx": "preserve", // Support JSX in .tsx files: "react", "preserve", "react-native"
+    "jsx": "react-jsx", // Support JSX in .tsx files: "react", "preserve", "react-native"
 
     // Added by @vybornyj
     "baseUrl": ".", // Base directory to resolve non-relative module names
