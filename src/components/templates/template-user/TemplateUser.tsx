@@ -79,7 +79,7 @@ export const TemplateUser: FunctionComponent<Props> = ({ title, description, use
     <>
       <TemplateHead title={title} description={description} />
 
-      <div className='template'>
+      <div className='flex'>
         <AppBar position='fixed' className={clsx(classes.appBar)}>
           <Toolbar>
             <IconButton
@@ -139,9 +139,6 @@ export const TemplateUser: FunctionComponent<Props> = ({ title, description, use
 
       <style jsx>{
         /* language=CSS */ `
-          .template {
-            display: flex;
-          }
           main {
             max-width: 1400px;
             margin: auto;
