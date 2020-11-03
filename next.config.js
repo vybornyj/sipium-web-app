@@ -15,7 +15,7 @@ module.exports = {
   // pwa: {
   //   dest: 'public',
   //   distDir: 'public',
-  //   disable: process.env.NODE_ENV !== 'production',
+  //   disable: process.env.NODE_ENV === 'development',
   //   register: false,
   //   skipWaiting: false
   // }
